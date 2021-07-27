@@ -4,7 +4,6 @@ class CreateActivities < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :image
       t.text :content
-      t.date :deletedAt
 
       t.timestamps
     end

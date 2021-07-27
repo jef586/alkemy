@@ -7,6 +7,8 @@ ruby '2.7.0'
 gem 'rails', '~> 6.1.4'
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.5'
+# Use Paranoia for Soft Delete
+gem "paranoia", "~> 2.2"
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
