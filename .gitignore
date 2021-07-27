@@ -27,5 +27,9 @@
 /config/master.key
 /config/deploy-secrets.yml
 
+<<<<<<< HEAD
 #Ignore database config
+=======
+# Ignore database config
+>>>>>>> dev
 /config/database.yml
