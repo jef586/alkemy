@@ -150,6 +150,7 @@ GEM
 PLATFORMS
   ruby
   -darwin-20
+  ruby
   x86_64-linux
 
 DEPENDENCIES
