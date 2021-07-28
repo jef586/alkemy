@@ -1,0 +1,52 @@
+# This is an example Starter pipeline configuration
+# Use a skeleton to build, test and deploy using manual and parallel steps
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: ruby:2.7.0
+
+pipelines:
+  default:
+    - parallel:
+      - step:
+          name: 'RSpec testing'
+          script:
+            - export RAILS_ENV=test
+            - gem install bundler --version 2.0.2
+            - bundle install --path vendor/bundle
+            - bundle exec rails db:create
+            - bundle exec rails db:schema:load
+            - bundle exec rspec
+          services:
+          - mysql
+
+      - step:
+          name: 'Rubocop lint'
+          script:
+            - export RAILS_ENV=test
+            - gem install bundler --version 2.0.2
+            - bundle install --path vendor/bundle
+            - bundle exec rubocop -R app spec --format simple
+            - bundle exec rails db:create
+            - bundle exec rails db:schema:load
+          services:
+          - mysql
+
+      - step:
+          name: 'i18n'
+          script:
+            - export RAILS_ENV=test
+            - gem install bundler --version 2.0.2
+            - bundle install --path vendor/bundle
+            - bundle exec i18n-tasks missing
+            
+definitions:
+  caches:
+    bundler: vendor/bundle
+  services:
+    mysql:
+      image: mysql
+      environment:
+        MYSQL_DB: somos_mas_project_test
+        MYSQL_USER: somos_mas_project_test
+        MYSQL_PASSWORD: password
+
