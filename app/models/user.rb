@@ -6,5 +6,9 @@ class User < ApplicationRecord
   # Associations
   belongs_to :role
   # Validations
-  validates :name, presence: true
+  validates :first_name,
+            :last_name,
+            :email,
+            :password,
+            presence: true
 end
