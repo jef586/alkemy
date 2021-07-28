@@ -1,6 +1,6 @@
 module Api
-  module v1
-    class CategoriesController <ApiController
+  module V1
+    class CategoriesController < ApiController
 
       def index
       end
