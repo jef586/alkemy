@@ -67,8 +67,11 @@ ActiveRecord::Schema.define(version: 2021_07_27_210601) do
     t.string "email"
     t.text "welcomeText"
     t.text "aboutUsText"
+    t.string "image_url"
+    t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["deleted_at"], name: "index_organizations_on_deleted_at"
   end
 
   create_table "roles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
