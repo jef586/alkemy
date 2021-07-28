@@ -6,5 +6,5 @@ class Organization < ApplicationRecord
   # Associations
 
   # Validations
-  validates :name, :email, :welcomeText, presence: true
+  validates :name, :email, :welcome_text, presence: true
 end
