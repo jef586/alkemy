@@ -16,9 +16,6 @@ module Api
 
       def destroy
       end
-
-      def restore
-      end
     end
   end
 end
