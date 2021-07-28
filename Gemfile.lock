@@ -149,10 +149,7 @@ GEM
 
 PLATFORMS
   -darwin-20
-<<<<<<< HEAD
   ruby
-=======
->>>>>>> dev
   x86_64-linux
 
 DEPENDENCIES
