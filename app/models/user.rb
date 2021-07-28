@@ -12,6 +12,5 @@ class User < ApplicationRecord
             :password,
             presence: true
 
-  # TODO: falta agregar a nivel db
   validates :email, uniqueness: true
 end
