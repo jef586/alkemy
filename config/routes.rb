@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :organizations
       resources :roles
       resources :categories
+      post "login", to: "session#login"
     end
   end
 end
