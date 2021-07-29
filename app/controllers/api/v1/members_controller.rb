@@ -2,7 +2,7 @@
 
 module Api
   module V1
-    class RolesController < ApiController
+    class MembersController < ApiController
       def index
       end
 
