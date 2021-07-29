@@ -7,7 +7,9 @@ Rails.application.routes.draw do
       resources :roles
       resources :categories
       resources :testimonials
+      resources :members
       resources :news
+      resources :activities
     end
   end
 end
