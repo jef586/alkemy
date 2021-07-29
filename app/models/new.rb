@@ -1,5 +1,5 @@
 class New < ApplicationRecord
-  belongs_to :categories
+  belongs_to :category
   has_one_attached :image
 
   acts_as_paranoid column: :deletedAt

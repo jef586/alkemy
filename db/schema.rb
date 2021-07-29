@@ -61,14 +61,14 @@ ActiveRecord::Schema.define(version: 2021_07_28_161127) do
   end
 
   create_table "news", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "category_id"
     t.string "name", null: false
     t.text "content", null: false
     t.string "image_url", null: false
-    t.bigint "categories_id", null: false
     t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["categories_id"], name: "index_news_on_categories_id"
+    t.index ["category_id"], name: "index_news_on_category_id"
     t.index ["deleted_at"], name: "index_news_on_deleted_at"
   end
 
@@ -109,5 +109,4 @@ ActiveRecord::Schema.define(version: 2021_07_28_161127) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "news", "categories", column: "categories_id"
 end
