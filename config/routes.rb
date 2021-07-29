@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :organizations
       resources :roles
       resources :categories
+      resources :testimonials
     end
   end
 end
