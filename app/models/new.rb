@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class New < ApplicationRecord
   belongs_to :category
   has_one_attached :image
@@ -8,5 +10,4 @@ class New < ApplicationRecord
   validates :name,
             :content,
             presence: true
-
 end
