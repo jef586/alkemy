@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Commentary < ApplicationRecord
-  belongs_to :User
-  belongs_to :New
+  belongs_to :user
+  belongs_to :new
 
   # Validations
   validates :body, presence: true
