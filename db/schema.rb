@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_29_000835) do
+ActiveRecord::Schema.define(version: 2021_07_29_100213) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -41,13 +41,11 @@ ActiveRecord::Schema.define(version: 2021_07_29_000835) do
   end
 
   create_table "activities", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
-    t.string "image"
-    t.text "content"
+    t.string "name", null: false
+    t.string "image", null: false
+    t.text "content", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.datetime "deletedAt"
-    t.index ["deletedAt"], name: "index_activities_on_deletedAt"
   end
 
   create_table "categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -125,6 +123,14 @@ ActiveRecord::Schema.define(version: 2021_07_29_000835) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "testimonials", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "content"
+    t.string "image_url"
+    t.datetime "deleted_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["deleted_at"], name: "index_testimonials_on_deleted_at"
   create_table "slides", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "organization_id"
     t.string "image_url", null: false

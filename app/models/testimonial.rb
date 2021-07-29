@@ -1,14 +1,10 @@
 # frozen_string_literal: true
 
-class Category < ApplicationRecord
+class Testimonial < ApplicationRecord
   acts_as_paranoid
   has_one_attached :image
-
   # Validations
   validates :name,
-            :description,
+            :content,
             presence: true
-
-  # Associations
-  has_many :news
 end
