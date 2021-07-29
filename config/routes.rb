@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :categories
       resources :members 
       resources :news
+      resources :activities
     end
   end
 end
