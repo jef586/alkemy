@@ -29,3 +29,6 @@
 
 # Ignore database config
 /config/database.yml
+
+# Env files
+.env.test
