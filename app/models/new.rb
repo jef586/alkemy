@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
-class Activity < ApplicationRecord
+class New < ApplicationRecord
+  belongs_to :category
+  has_one_attached :image
+
   acts_as_paranoid column: :deletedAt
 
   # Validations
