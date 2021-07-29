@@ -5,9 +5,7 @@ Rails.application.routes.draw do
       resources :organizations
       resources :roles
       resources :categories
-      resources :members
-      put 'members/:id/restore', to: 'members#restore'
-      patch 'members/:id/restore', to: 'members#restore'      
+      resources :members 
     end
   end
 end
