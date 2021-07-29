@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Organization < ApplicationRecord
   # Softdelete
   acts_as_paranoid
@@ -9,8 +11,8 @@ class Organization < ApplicationRecord
   has_many :slides
 
   # Validations
-  validates :name, 
-            :email, 
-            :welcome_text, 
+  validates :name,
+            :email,
+            :welcome_text,
             presence: true
 end

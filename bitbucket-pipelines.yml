@@ -1,0 +1,14 @@
+image: ruby:2.7.0
+
+pipelines:
+  default:
+      - step:
+          caches:
+            - bundler
+          script:
+            - bundle install
+            - bundle exec rubocop
+            - bundle exec rspec
+definitions:
+  caches:
+    bundler: ./vendor

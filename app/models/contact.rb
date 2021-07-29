@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
-class Activity < ApplicationRecord
+class Contact < ApplicationRecord
   acts_as_paranoid column: :deletedAt
 
   # Validations
   validates :name,
-            :content,
+            :phone,
+            :message,
             presence: true
 end
