@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Slide < ApplicationRecord
   # Active Storage
   has_one_attached :image
@@ -7,6 +9,6 @@ class Slide < ApplicationRecord
   validates :image_url,
             :text,
             presence: true
-  
-  validates :order, numericality: {only_integer: true}, allow_nil: true
+
+  validates :order, numericality: { only_integer: true }, allow_nil: true
 end
