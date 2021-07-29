@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :roles
       resources :categories
       resources :news
+      resources :activities
     end
   end
 end
