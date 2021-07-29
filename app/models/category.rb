@@ -8,7 +8,7 @@ class Category < ApplicationRecord
   validates :name,
             :description,
             presence: true
-            
+
   # Associations
   has_many :news
 end
