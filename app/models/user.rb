@@ -7,10 +7,10 @@ class User < ApplicationRecord
   has_one_attached :image
   # Associations
   belongs_to :role
-  
-  #Authentication
+
+  # Authentication
   has_secure_password
-  
+
   # Validations
   validates :first_name,
             :last_name,

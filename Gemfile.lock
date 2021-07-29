@@ -65,13 +65,10 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-<<<<<<< HEAD
-    bcrypt (3.1.16)
-=======
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.2)
->>>>>>> 9314eadacc4b528bc9bacad771807a2e4ea890c6
+    bcrypt (3.1.16)
     bootsnap (1.7.6)
       msgpack (~> 1.0)
     builder (3.2.4)
@@ -94,26 +91,20 @@ GEM
       dotenv (= 2.7.6)
       railties (>= 3.2)
     erubi (1.10.0)
-<<<<<<< HEAD
-    faker (2.18.0)
-      i18n (>= 1.6, < 2)
-=======
     factory_bot (6.2.0)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
+    faker (2.18.0)
+      i18n (>= 1.6, < 2)
     ffaker (2.18.0)
->>>>>>> 9314eadacc4b528bc9bacad771807a2e4ea890c6
     ffi (1.15.3)
-    globalid (0.4.2)
-      activesupport (>= 4.2.0)
+    globalid (0.5.1)
+      activesupport (>= 5.0)
     highline (2.0.3)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
-<<<<<<< HEAD
-    jwt (2.2.3)
-=======
     i18n-tasks (0.9.34)
       activesupport (>= 4.0.2)
       ast (>= 2.1.0)
@@ -128,7 +119,7 @@ GEM
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
     jsonapi-renderer (0.2.2)
->>>>>>> 9314eadacc4b528bc9bacad771807a2e4ea890c6
+    jwt (2.2.3)
     listen (3.6.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -149,15 +140,13 @@ GEM
     nokogiri (1.11.7)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
-    nokogiri (1.11.7-x86_64-linux)
-      racc (~> 1.4)
     parallel (1.20.1)
     paranoia (2.4.3)
       activerecord (>= 4.0, < 6.2)
     parser (3.0.2.0)
       ast (~> 2.4.1)
     public_suffix (4.0.6)
-    puma (5.3.2)
+    puma (5.4.0)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -277,28 +266,21 @@ GEM
     zeitwerk (2.4.2)
 
 PLATFORMS
-  -darwin-20
   ruby
-  x86_64-linux
 
 DEPENDENCIES
-<<<<<<< HEAD
-  bcrypt (~> 3.1.7)
-  bootsnap (>= 1.4.4)
-  byebug
-  faker
-  jwt
-=======
   active_model_serializers
+  bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.4)
   byebug
   capybara
   dotenv-rails
   factory_bot_rails
+  faker
   ffaker
   i18n-tasks
   image_processing
->>>>>>> 9314eadacc4b528bc9bacad771807a2e4ea890c6
+  jwt
   listen (~> 3.3)
   mysql2 (~> 0.5)
   paranoia (~> 2.2)
