@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   root "home#show"
 
-    namespace :api do
+  namespace :api do
     namespace :v1 do
-      resources :news, only: [ :index, :show, :update, :create, :destroy]
+      resources :organizations
+      resources :roles
+      resources :categories
+      resources :news
     end
   end
 end
