@@ -8,9 +8,9 @@ User.create(first_name: "Name", last_name: "LastName", email: "test@gtesting.com
 
 5.times do
     user = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "client", rol: client)
-    Post.create(title: Faker::Book.title, content: Faker::Lorem.paragraph, user: user)
+    New.create(title: Faker::Book.title, content: Faker::Lorem.paragraph, user: user)
 end
 
 p "#{User.count} created users"
 p "#{Rol.count} created roles"
-p "#{Post.count} created posts"
+p "#{New.count} created news"
