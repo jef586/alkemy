@@ -6,8 +6,11 @@ Rails.application.routes.draw do
       resources :organizations
       resources :roles
       resources :categories
+      resources :testimonials
+      resources :members
       resources :news
-      
+      resources :activities
+            
       post "login", to: "session#login"
 
     end
