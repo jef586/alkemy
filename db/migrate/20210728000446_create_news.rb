@@ -2,6 +2,7 @@ class CreateNews < ActiveRecord::Migration[6.1]
   def change
     create_table :news do |t|
       t.belongs_to :category
+      t.belongs_to :user
       t.string :name, null: false
       t.text :content, null: false
       t.string :image_url, null: false
