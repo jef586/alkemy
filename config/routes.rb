@@ -10,9 +10,6 @@ Rails.application.routes.draw do
       resources :members
       resources :news
       resources :activities
-            
-      post "login", to: "session#login"
-
     end
   end
 end

@@ -4,7 +4,7 @@ administrator = Role.create(name: "Administrator")
 client = Role.create(name: "Client")
 visitor = Role.create(name: "Visitor")
 
-User.create(first_name: "Name", last_name: "LastName", email: "test@testing.com", password_digest: "123456", role: administrator)
+User.create(first_name: "John", last_name: "Doe", email: "test@testing.com", password: "123456", role: administrator)
 
 5.times do
     user = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password_digest: "client", role: client)
