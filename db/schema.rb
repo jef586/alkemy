@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 2021_07_29_170547) do
 
   create_table "news", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "category_id"
+    t.bigint "user_id"
     t.string "name", null: false
     t.text "content", null: false
     t.string "image_url", null: false
@@ -102,6 +103,7 @@ ActiveRecord::Schema.define(version: 2021_07_29_170547) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_news_on_category_id"
     t.index ["deleted_at"], name: "index_news_on_deleted_at"
+    t.index ["user_id"], name: "index_news_on_user_id"
   end
 
   create_table "organizations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -150,7 +152,7 @@ ActiveRecord::Schema.define(version: 2021_07_29_170547) do
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "email", null: false
-    t.string "password", null: false
+    t.string "password_digest", null: false
     t.string "image_url"
     t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false

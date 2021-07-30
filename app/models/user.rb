@@ -15,7 +15,7 @@ class User < ApplicationRecord
   validates :first_name,
             :last_name,
             :email,
-            :password,
+            :password_digest,
             presence: true
 
   validates :email, uniqueness: true

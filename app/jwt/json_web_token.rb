@@ -1,17 +1,15 @@
 # frozen_string_literal: true
 
 class JsonWebToken
-  JWT_SECRET = ENV["JWT_SECRET"]
+  JWT_SECRET = Rails.application.secrets.secret_key_base. to_s
+
   def self.encode(payload, exp = 24.hours.from_now)
     payload[:exp] = exp.to_i
     JWT.encode(payload, JWT_SECRET)
   end
+
   def self.decode(token)
-    body = JWT.decode(token, JWT_SECRET)[0]
-    HashWithIndifferentAccess.new body
-rescue JWT::ExpiredSignature, JWT::VerificationError => e
-  raise ExceptionHandler::TokenExpired, e.message
-rescue JWT::DecodeError, JWT::VerificationError => e
-  raise ExceptionHandler::TokenInvalid, e.message
+    decoded = JWT.decode(token, SECRET_KEY)[0]
+    HashWithIndifferentAccess.new decoded
   end
 end

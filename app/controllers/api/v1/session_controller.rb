@@ -2,11 +2,14 @@
 
 module Api
   module V1
-    class SessionController < ApplicationController
+    class SessionController < ApiController
+      include Authenticable
+
       def login
-        auth = Authentication.new(login_params)
-        if auth.authenticate
-          render json: { message: "¡Successful login!", token: auth.generar_token }, status: :ok
+        find_user(login_params)
+
+        if authenticate_user
+          render json: { message: "¡Successful login!", token: generate_token }, status: :ok
         else
           render json: { message: "Incorrect email or password" }, status: :unauthorized
         end
