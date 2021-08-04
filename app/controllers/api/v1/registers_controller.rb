@@ -1,7 +1,7 @@
 # frozen_string_literal: true
-module api
-  module v1
-    class RegisterController < ApiController
+module Api
+  module V1
+    class RegistersController < ApiController
       def create
         user = User.new(user_params)
         if user.save
@@ -9,8 +9,13 @@ module api
         else
           render json: "error", status: :unprocessable_entity
         end
-                
       end
+
+    private
+      def user_params
+        params.permit(:first_name, :last_name, :email, :password)
+      end
+      
     end
 
   end

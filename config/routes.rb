@@ -10,8 +10,10 @@ Rails.application.routes.draw do
       resources :members
       resources :news
       resources :activities
-      resources :users
+      resources :sessions
       post "/auth/login", to:"session#login"
+      resources :registers
+      post "/auth/register", to:"register#create"
     end
   end
 end
