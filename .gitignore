@@ -32,3 +32,4 @@
 
 # Env files
 .env.test
+.env.development
