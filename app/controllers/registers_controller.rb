@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class RegistersController < ApiController
-  
-
   def create
     user = User.new(user_params)
     if user.save
