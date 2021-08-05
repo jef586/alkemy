@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ApiController < ApplicationController
+  before_action :authorize_request
+
   def not_found
     render json: { error: "not_found" }
   end

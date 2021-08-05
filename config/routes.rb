@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   root "home#show"
-  resources :sessions
-  post "/auth/login", to:"sessions#login"
-  resources :registers
-  post "/auth/register", to:"registers#create"
+
+  namespace :auth do
+    post "login", to:"sessions#login"
+    post "register", to:"registers#create"
+  end
   
   namespace :api do
     namespace :v1 do
@@ -14,8 +15,6 @@ Rails.application.routes.draw do
       resources :members
       resources :news
       resources :activities
-      
     end
   end
-  
 end
