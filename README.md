@@ -18,13 +18,13 @@ The output should start with something like > ruby 2.7.0
 
 ## Install dependencies
 
-Using Bundler and Yarn
+Using Bundler
 
-> bundle && yarn
+> bundle install
 
 ## Initialize the database
 
-> rails db:create db:migate db:seed
+> rails db:drop db:create db:migrate db:seed
 
 ## Seed
 
