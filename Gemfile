@@ -5,6 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.7.0"
 
+# Library for authorization
+gem "cancancan"
 # To use Json Web Token
 gem "jwt"
 # To use fake data for testing

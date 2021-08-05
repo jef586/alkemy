@@ -24,6 +24,11 @@ module SomosMasProject
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
+    # Global configuration on how to react to CanCan::AccesDenied
+    # :not_found would be a better http status when we doesn't want to reveal 
+    # to the user that the article exists
+    config.action_dispatch.rescue_responses.merge!('CanCan::AccessDenied' => :not_found)
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
