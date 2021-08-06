@@ -21,7 +21,7 @@ module Api
 
       private
         def set_users
-          users = User.all
+          User.all
         end
     end
   end
