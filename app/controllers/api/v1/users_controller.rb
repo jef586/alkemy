@@ -1,18 +1,32 @@
 # frozen_string_literal: true
 
-class UsersController < ApplicationController
-  def index
-  end
+module Api
+  module V1
+    class UsersController < ApiController
+      def index
+      end
 
-  def show
-  end
+      def show
+      end
 
-  def create
-  end
+      def create
+      end
 
-  def update
-  end
+      def update
+      end
 
-  def destroy
+      def destroy
+        if user.present?
+          user.destroy
+        end
+
+        head :no_content
+      end
+
+      private
+        def user
+          @user ||= User.find(params[:id])
+        end
+    end
   end
 end
