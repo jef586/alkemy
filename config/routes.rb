@@ -7,14 +7,20 @@ Rails.application.routes.draw do
   end
   
   namespace :api do
+    namespace :admin do
+      resources :members
+      resources :testimonials
+      resources :contacts
+      resources :activities
+      resources :slides
+    end
+    
     namespace :v1 do
       resources :organizations
       resources :roles
       resources :categories
-      resources :testimonials
-      resources :members
       resources :news
-      resources :activities
+      resources :comentaries, only: [:create]
       resources :users
     end
   end
