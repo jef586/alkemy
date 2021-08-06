@@ -4,7 +4,7 @@ module Api
   module V1
     class UsersController < ApplicationController
       def index
-        render json: set_users
+        render json: users
       end
 
       def show
@@ -17,11 +17,20 @@ module Api
       end
 
       def destroy
+        if user.present?
+          user.destroy
+        end
+
+        head :no_content
       end
 
       private
-        def set_users
-          User.all
+        def users
+          @users ||= User.all
+        end
+
+        def user
+          @user ||= User.find(params[:id])
         end
     end
   end

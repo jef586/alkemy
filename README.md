@@ -32,3 +32,7 @@ Using Bundler
 
 This part of seed create ten users with administrator role and ten users with client role to 
 test authentication and authorization.
+
+### Activities instances
+
+This part of seed take real activities from the project with the purpose to populate the database.
