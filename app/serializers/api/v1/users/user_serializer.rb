@@ -4,7 +4,12 @@ module Api
   module V1
     module Users
       class UserSerializer < ApplicationSerializer
-        attributes :id, :role, :first_name, :last_name, :email, :image_url
+        attributes :id,
+                   :role,
+                   :first_name,
+                   :last_name,
+                   :email,
+                   :image_url
 
         def role
           object.role.name
