@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resources :members
       resources :news
       resources :activities
+      resources :users
     end
   end
 end
