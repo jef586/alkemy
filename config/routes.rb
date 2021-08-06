@@ -12,4 +12,6 @@ Rails.application.routes.draw do
       resources :activities
     end
   end
+
+  get '/auth/me' => 'profiles#show'
 end

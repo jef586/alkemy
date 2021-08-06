@@ -15,4 +15,11 @@ class UsersController < ApplicationController
 
   def destroy
   end
+
+  def profile
+    if authenticate?
+      @current_user = current_user
+    else
+    raise(ExceptionHandler::AuthenticationError, Message.invalid_credentials)
+  end
 end
