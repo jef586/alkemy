@@ -4,7 +4,7 @@ module Api
   module V1
     class UsersController < ApplicationController
       def index
-        render json: users
+        render json: users, each_serializer: Users::UserSerializer, status: :ok
       end
 
       def show
