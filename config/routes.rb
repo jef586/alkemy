@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       resources :roles
       resources :categories
       resources :news
-      resources :comentaries, only: [:create]
+      resources :commentaries, only: [:create]
       resources :users
     end
   end

@@ -13,13 +13,12 @@ module Api
         end
   
         def create
-          # TO DO
-          # create_commentary = Commentary.new(creation_commentary_params)
+          commentary = @current_user.commentaries.new(create_comentary_params)
+  
           if commentary.save
-            # TO DO
-            # render json: commentary, serializer: , status: :created
+            render json: commentary, status: :created
           else
-            render json: { error: "We can't save your commentary" }, status: :unprocessable_entity
+            render json: { message: "error" }, status: :unprocessable_entity
           end
         end
   
@@ -38,12 +37,12 @@ module Api
   
         private
         
-        def commentary
-          @commentary || = Commentary.find(params[:id])
-        end
+       # def commentary
+       #   @commentary || = Commentary.find(params[:id])
+       # end
   
-        def commentary_params
-          params.require(:commentary).permit(:body)
+        def create_comentary_params
+          params.permit(:body)
         end
   
       end
