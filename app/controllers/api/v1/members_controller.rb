@@ -2,7 +2,7 @@
 
 module Api
   module V1
-    class MembersController < ApiController      
+    class MembersController < ApiController
       load_and_authorize_resource
 
       def index
@@ -20,7 +20,6 @@ module Api
 
       def destroy
       end
-
     end
   end
 end
