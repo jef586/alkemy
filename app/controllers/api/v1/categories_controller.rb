@@ -3,7 +3,6 @@
 module Api
   module V1
     class CategoriesController < ApiController
-      before_action :set_category, only: %i[destroy]
       def index
       end
       def show
@@ -13,15 +12,15 @@ module Api
       def create
       end
       def destroy
-        if @category.present?
-          @category.destroy
+        if category.present?
+          category.destroy
         else
-          render json: { errors: @category.errors.full_messages }, status: :unprocessable_entity
+          render json: { errors: category.errors.full_messages }, status: :unprocessable_entity
         end
       end
 
       private
-        def set_category
+        def category
           @category = Category.find(params[:id])
         end
     end
