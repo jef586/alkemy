@@ -10,6 +10,10 @@ module Api
                    :last_name,
                    :email,
                    :image_url
+
+        def role
+          object.role.name
+        end
       end
     end
   end
