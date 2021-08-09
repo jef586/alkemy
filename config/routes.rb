@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => '/api/docs'
+  mount Rswag::Api::Engine => '/api/docs'
   root "home#show"
 
   namespace :auth do
     post "login", to:"sessions#login"
     post "register", to:"registers#create"
+    get "me", to:"profiles#show"
   end
   
   namespace :api do
