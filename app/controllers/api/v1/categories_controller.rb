@@ -5,18 +5,24 @@ module Api
     class CategoriesController < ApiController
       def index
       end
-
       def show
       end
-
       def update
       end
-
       def create
       end
-
       def destroy
+        if category.present?
+          category.destroy
+        end
+
+        head :no_content
       end
+
+      private
+        def category
+          @category = Category.find(params[:id])
+        end
     end
   end
 end
