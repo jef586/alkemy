@@ -1,24 +1,38 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Project
 
-Things you may want to cover:
+Somos más
 
-* Ruby version
+## Install
 
-* System dependencies
+### Clone the repository
 
-* Configuration
+> git clone git@bitbucket.org:alkemy-dev/t59-project.git
 
-* Database creation
+## Check your Ruby version
 
-* Database initialization
+> ruby -v
 
-* How to run the test suite
+The output should start with something like > ruby 2.7.0
 
-* Services (job queues, cache servers, search engines, etc.)
+## Install dependencies
 
-* Deployment instructions
+Using Bundler
 
-* ...
+> bundle install
+
+## Initialize the database
+
+> rails db:drop db:create db:migrate db:seed
+
+## Seed
+
+### Users instances
+
+This part of seed create ten users with administrator role and ten users with client role to 
+test authentication and authorization.
+
+### Activities instances
+
+This part of seed take real activities from the project with the purpose to populate the database.

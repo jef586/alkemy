@@ -3,10 +3,12 @@
 class User < ApplicationRecord
   # Soft Delete
   acts_as_paranoid
+
   # Active Storage
   has_one_attached :image
+
   # Associations
-  belongs_to :role
+  belongs_to :role, optional: true
 
   # Authentication
   has_secure_password
@@ -19,4 +21,9 @@ class User < ApplicationRecord
             presence: true
 
   validates :email, uniqueness: true
+  before_create :assign_default_role
+
+  def assign_default_role
+    self.create_role(name: "regular") if self.role.blank?
+  end
 end
