@@ -14,7 +14,7 @@ class Category < ApplicationRecord
   has_many :news
 
   def name_must_be_a_string
-    unless name.is_a? String 
+    unless name.is_a? String
       errors.add(:name, "name must be a string")
     end
   end
