@@ -19,4 +19,10 @@ class ApiController < ApplicationController
     render json: { errors: e.message }, status: :unauthorized
     end
     end
+
+  private
+      def current_user
+        return unless session[:user_id]
+        @current_user ||= User.find(session[:user_id])
+      end
 end
