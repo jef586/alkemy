@@ -72,5 +72,5 @@ paseos_recreativos_y_educativos = Activity.create(
 # Members instance
 
 10.times do
-    Member.create(name: Faker::Name.name, facebook_url: Faker::Internet.url(host: "facebook.com"), instagram_url: Faker::Internet.url(host: "instagram.com"), linkedin_url: Faker::Internet.url(host: "linkedin.com"), description: Faker::String.random, image_url: Faker::Internet.url(host: "example.com", path: "/image.jpg"))
+    Member.create(name: Faker::Name.name, facebook_url: Faker::Internet.url(host: "facebook.com"), instagram_url: Faker::Internet.url(host: "instagram.com"), linkedin_url: Faker::Internet.url(host: "linkedin.com"), description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image_url: Faker::Internet.url(host: "example.com", path: "/image.jpg"))
 end
