@@ -4,7 +4,9 @@ module Api
   module V1
     class CategoriesController < ApiController
       def index
+        render json: categories, each_serializer: Categories::CategorySerializer, status: :ok
       end
+      
       def show
       end
       def update
@@ -21,7 +23,11 @@ module Api
 
       private
         def category
-          @category = Category.find(params[:id])
+          @category ||= Category.find(params[:id])
+        end
+
+        def categories 
+          @categories ||= Category.all
         end
     end
   end
