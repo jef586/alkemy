@@ -36,3 +36,7 @@ test authentication and authorization.
 ### Activities instances
 
 This part of seed take real activities from the project with the purpose to populate the database.
+
+### Members instances
+
+This part of seed create ten members with all information nedeed to test the endpoints of the Members controller.
