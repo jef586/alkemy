@@ -6,9 +6,8 @@ class Commentary < ApplicationRecord
 
   # Validations
   validates :body, presence: true
-  
+
   def user
     User.unscoped { super }
   end
-
 end

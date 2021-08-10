@@ -26,11 +26,11 @@ module Api
 
       private
         def commentaries
-            @commentaries = Commentary.all
+          @commentaries = Commentary.all
         end
-        
+
         def commentary
-            @commentary ||= current_user.commentaries.find(params[:id])
+          @commentary ||= current_user.commentaries.find(params[:id])
         end
 
         def update_commentary_params
