@@ -5,8 +5,12 @@ module Api
     class CategoriesController < ApiController
       def index
       end
+
       def show
+        # to do implement only admin privilege
+        render json: category, serializer: Categories::CategorySerializer, status: :ok
       end
+
       def update
       end
       def create

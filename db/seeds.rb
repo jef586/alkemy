@@ -69,3 +69,12 @@ paseos_recreativos_y_educativos = Activity.create(
     image: "Image"
 )
 
+p "#{Activity.count} created activities" 
+
+# Categories instances
+
+10.times do
+    category = Category.create(name: Faker::Lorem.word, description: Faker::Lorem.sentence, image_url: "https://source.unsplash.com/random")
+end
+
+p "#{Category.count} created categories" 
