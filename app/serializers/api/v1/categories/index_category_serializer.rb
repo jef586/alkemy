@@ -3,7 +3,7 @@
 module Api
   module V1
     module Categories
-      class CategorySerializer < ApplicationSerializer
+      class IndexCategorySerializer < ApplicationSerializer
         attributes :name
       end
     end
