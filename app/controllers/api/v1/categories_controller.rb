@@ -6,7 +6,7 @@ module Api
       def index
         render json: categories, each_serializer: Categories::CategorySerializer, status: :ok
       end
-      
+
       def show
       end
       def update
@@ -26,7 +26,7 @@ module Api
           @category ||= Category.find(params[:id])
         end
 
-        def categories 
+        def categories
           @categories ||= Category.all
         end
     end
