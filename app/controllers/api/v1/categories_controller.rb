@@ -10,12 +10,12 @@ module Api
 
       def update
         if category.update(update_parameters)
-          render json:category, serializer: Categories::CategorySerializer, status: :ok
+          render json: category, serializer: Categories::CategorySerializer, status: :ok
         else
-          render json:category.errors, status: :unprocessable_entity
+          render json: category.errors, status: :unprocessable_entity
         end
       end
-      
+
       def create
       end
       def destroy
@@ -32,7 +32,7 @@ module Api
         end
 
         def update_parameters
-          params.require(:category).permit(:name,:description)
+          params.require(:category).permit(:name, :description)
         end
     end
   end
