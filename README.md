@@ -36,3 +36,8 @@ test authentication and authorization.
 ### Activities instances
 
 This part of seed take real activities from the project with the purpose to populate the database.
+
+### News instances 
+
+This part of seed create an user with administrator role and ten news to test the endpoints of the News
+controller.
