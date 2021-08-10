@@ -9,8 +9,16 @@ module Api
       end
       def update
       end
+
       def create
+        @category = Category.new(create_parameters)
+        if @category.save
+          render json: @category, serializer: Categories::CategorySerializer, status: :created
+        else
+          render json: @category.errors, status: :unprocessable_entity
+        end
       end
+
       def destroy
         if category.present?
           category.destroy
@@ -22,6 +30,10 @@ module Api
       private
         def category
           @category = Category.find(params[:id])
+        end
+
+        def create_parameters
+          params.require(:category).permit(:name, :description)
         end
     end
   end
