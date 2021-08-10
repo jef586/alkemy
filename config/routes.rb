@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :auth do
     post "login", to:"sessions#login"
     post "register", to:"registers#create"
+    get "me", to:"profiles#show"
   end
   
   namespace :api do
