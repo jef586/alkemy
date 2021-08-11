@@ -7,8 +7,6 @@ module Api
       end
 
       def show
-        new
-
         render json: new, serializer: NewSerializer, status: :ok
       end
 
