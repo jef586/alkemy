@@ -15,7 +15,7 @@ class Category < ApplicationRecord
 
   def name_must_be_a_string
     unless name.is_a? String
-      errors.add(:name, "name must be a string")
+      errors.add(:name, :name_must_be_a_string)
     end
   end
 end
