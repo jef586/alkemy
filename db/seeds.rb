@@ -69,3 +69,8 @@ paseos_recreativos_y_educativos = Activity.create(
     image: "Image"
 )
 
+10.times do
+    organization = Organization.create(name: Faker::Company.name, image_url: "https://source.unsplash.com/random", phone: Faker::PhoneNumber.phone_number, address: Faker::Address.full_address, email: Faker::Internet.email, welcome_text: Faker::Lorem.sentence)
+end
+
+p "#{Organization.count} created Organizations"

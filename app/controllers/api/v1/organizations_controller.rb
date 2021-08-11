@@ -7,6 +7,7 @@ module Api
       end
 
       def show
+        render json: organization, serializer: Organizations::OrganizationSerializer, status: :ok
       end
 
       def create
@@ -16,6 +17,11 @@ module Api
       end
 
       def destroy
+      end
+
+      private
+      def organization
+        @organization = Organization.find(params[:id])
       end
     end
   end
