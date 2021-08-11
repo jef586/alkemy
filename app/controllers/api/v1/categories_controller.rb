@@ -49,7 +49,7 @@ module Api
         end
 
         def update_parameters
-          params.require(:category).permit(:name, :description)
+          params.permit(:name, :description)
         end
     end
   end
