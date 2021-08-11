@@ -9,7 +9,13 @@ module Api
 
       def show
       end
+
       def update
+        if category.update(update_parameters)
+          render json: category, serializer: Categories::CategorySerializer, status: :ok
+        else
+          render json: category.errors, status: :unprocessable_entity
+        end
       end
 
       def create
@@ -39,6 +45,10 @@ module Api
         end
 
         def create_parameters
+          params.permit(:name, :description)
+        end
+
+        def update_parameters
           params.permit(:name, :description)
         end
     end
