@@ -12,7 +12,7 @@ visitor = Role.create(name: "Visitor")
 end
 
 10.times do
-    User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password_digest: "client", role: client)
+    User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "client", role: client)
 end
 
 # Activities instances
@@ -65,6 +65,7 @@ paseos_recreativos_y_educativos = Activity.create(
     image: "Image"
 )
 
+
 # News instances
 
 admin = User.create(first_name: "Admin", last_name: "Admin", email: "admin@admin.com", password: "password", role: administrator)
@@ -72,3 +73,16 @@ admin = User.create(first_name: "Admin", last_name: "Admin", email: "admin@admin
 10.times do
     New.create(name: Faker::Book.title, content: Faker::Lorem.paragraph, image_url: Faker::Internet.url(host: 'example.com', path: '/image.url'), user: admin)
 end
+
+# Commentary instances
+
+usuario = User.create(first_name: "User", last_name: "User", email: "user@user.com", password: "password", role: client)
+
+10.times do
+    Commentary.create(body: Faker::Lorem.paragraph, user: usuario)
+end
+
+p "#{User.count} created users"
+p "#{Role.count} created roles"
+p "#{New.count} created news"
+p "#{Commentary.count} created comments"

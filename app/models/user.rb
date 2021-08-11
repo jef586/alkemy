@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   # Associations
   belongs_to :role, optional: true
+  has_many :commentaries
 
   # Authentication
   has_secure_password
