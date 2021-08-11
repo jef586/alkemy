@@ -11,11 +11,11 @@ module Api
       end
 
       def create
-        @category = Category.new(create_parameters)
-        if @category.save
-          render json: @category, serializer: Categories::CategorySerializer, status: :created
+        category = Category.new(create_parameters)
+        if category.save
+          render json: category, serializer: Categories::CategorySerializer, status: :created
         else
-          render json: @category.errors, status: :unprocessable_entity
+          render json: category.errors, status: :unprocessable_entity
         end
       end
 
@@ -33,7 +33,7 @@ module Api
         end
 
         def create_parameters
-          params.require(:category).permit(:name, :description)
+          params.permit(:name, :description)
         end
     end
   end

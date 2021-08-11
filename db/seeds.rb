@@ -69,17 +69,11 @@ paseos_recreativos_y_educativos = Activity.create(
 
 CATEGORIES = %w{ Educacion Ocio Novedades Cultura Noticias Tecnologia }
 
-
 CATEGORIES.each do |category|
-
     Category.create!(
-
         name: category,
-
-        description: 'description',        
-
-    )
-
+        description: 'description', 
+        )
 end
 
 # Members instance
