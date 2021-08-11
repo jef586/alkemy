@@ -65,6 +65,17 @@ paseos_recreativos_y_educativos = Activity.create(
     image: "Image"
 )
 
+# Categories Instances
+
+CATEGORIES = %w{ Educacion Ocio Novedades Cultura Noticias Tecnologia }
+
+CATEGORIES.each do |category|
+    Category.create!(
+        name: category,
+        description: 'description', 
+        )
+end
+
 # Members instance
 
 10.times do
@@ -91,3 +102,4 @@ p "#{User.count} created users"
 p "#{Role.count} created roles"
 p "#{New.count} created news"
 p "#{Commentary.count} created comments"
+p "#{Category.count} created categories"
