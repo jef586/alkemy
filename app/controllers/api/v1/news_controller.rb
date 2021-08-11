@@ -11,6 +11,14 @@ module Api
       end
 
       def create
+        create_new = current_user.news.new(create_new_params)
+        create_new.save
+
+        if create_new.persisted?
+          render json: create_new, serializer: NewSerializer, status: :created
+        else
+          render json: { errors: create_new.errors }, status: :unprocessable_entity
+        end
       end
 
       def update
@@ -22,6 +30,24 @@ module Api
       private
         def new
           @new ||= New.find(params[:id])
+        end
+
+        def news
+          @news ||= fetch_news
+        end
+
+        def fetch_news
+          news = New.all
+          news
+        end
+
+        def create_new_params
+          params.permit(
+            name,
+            content,
+            image_url,
+            category_id
+          )
         end
     end
   end
