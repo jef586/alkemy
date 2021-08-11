@@ -12,12 +12,8 @@ visitor = Role.create(name: "Visitor")
 end
 
 10.times do
-    User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password_digest: "client", role: client)
+    User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "client", role: client)
 end
-
-p "#{User.count} created users"
-p "#{Role.count} created roles"
-p "#{New.count} created news"
 
 # Activities instances
 
@@ -71,11 +67,13 @@ paseos_recreativos_y_educativos = Activity.create(
 
 # Commentary instances
 
-usuario = User.create(first_name: "User", last_name: "User", email: "user@user.com", password_digest: "password", role: client)
+usuario = User.create(first_name: "User", last_name: "User", email: "user@user.com", password: "password", role: client)
 
 10.times do
     Commentary.create(body: Faker::Lorem.paragraph, user: usuario)
 end
 
 p "#{User.count} created users"
+p "#{Role.count} created roles"
+p "#{New.count} created news"
 p "#{Commentary.count} created comments"

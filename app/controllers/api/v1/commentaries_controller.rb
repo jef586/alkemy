@@ -4,7 +4,6 @@ module Api
   module V1
     class CommentariesController < ApiController
       def index
-        render json: commentaries, each_serializer: CommentarySerializer, status: :ok
       end
 
       def show
@@ -25,12 +24,8 @@ module Api
       end
 
       private
-        def commentaries
-          @commentaries = Commentary.all
-        end
-
         def commentary
-          @commentary ||= current_user.commentaries.find(params[:id])
+          @commentary ||= @current_user.commentaries.find(params[:id])
         end
 
         def update_commentary_params
