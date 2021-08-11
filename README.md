@@ -37,6 +37,11 @@ test authentication and authorization.
 
 This part of seed take real activities from the project with the purpose to populate the database.
 
+### News instances 
+
+This part of seed create an user with administrator role and ten news to test the endpoints of the News
+controller.
+
 ### Commentaries instances
 
 This part of seed create an user and ten commentaries with the purpose to test the endpoint of the Commentary controller.

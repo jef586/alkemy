@@ -7,6 +7,7 @@ module Api
       end
 
       def show
+        render json: new, serializer: NewSerializer, status: :ok
       end
 
       def create
@@ -17,6 +18,11 @@ module Api
 
       def destroy
       end
+
+      private
+        def new
+          @new ||= New.find(params[:id])
+        end
     end
   end
 end
