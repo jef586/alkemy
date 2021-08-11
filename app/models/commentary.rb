@@ -2,12 +2,8 @@
 
 class Commentary < ApplicationRecord
   belongs_to :user
-  belongs_to :new, optional: true
+  belongs_to :new
 
   # Validations
   validates :body, presence: true
-
-  def user
-    User.unscoped { super }
-  end
 end
