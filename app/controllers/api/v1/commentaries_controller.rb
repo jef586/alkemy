@@ -18,6 +18,14 @@ module Api
       end
 
       def create
+        create_commentary = current_user.commentaries.new(create_commentary_params)
+        create_commentary.save
+
+        if create_commentary.persisted?
+          render json: create_commentary, serializer: CommentarySerializer, status: :created
+        else
+          render json: { errors: create_commentary.errors }, status: :unprocessable_entity
+        end
       end
 
       def destroy
@@ -28,9 +36,25 @@ module Api
           @commentary ||= @current_user.commentaries.find(params[:id])
         end
 
+        def commentaries
+          @commentaries ||= fetch_commentaries
+        end
+
+        def fetch_commentaries
+          commentaries = Commentary.all
+          commentaries
+        end
+
         def update_commentary_params
           params.permit(
               :body
+            )
+        end
+
+        def create_commentary_params
+          params.permit(
+              :body,
+              :new_id
             )
         end
     end
