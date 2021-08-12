@@ -42,18 +42,16 @@ ActiveRecord::Schema.define(version: 2021_07_29_170547) do
 
   create_table "activities", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
-    t.string "image", null: false
     t.text "content", null: false
+    t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.datetime "deletedAt"
-    t.index ["deletedAt"], name: "index_activities_on_deletedAt"
+    t.index ["deleted_at"], name: "index_activities_on_deleted_at"
   end
 
   create_table "categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
-    t.text "description"
-    t.string "image_url"
+    t.text "description", null: false
     t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -63,7 +61,7 @@ ActiveRecord::Schema.define(version: 2021_07_29_170547) do
   create_table "commentaries", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "new_id"
-    t.text "body"
+    t.text "body", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["new_id"], name: "index_commentaries_on_new_id"
@@ -71,13 +69,13 @@ ActiveRecord::Schema.define(version: 2021_07_29_170547) do
   end
 
   create_table "contacts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
-    t.integer "phone_number"
-    t.text "message"
+    t.string "name", null: false
+    t.integer "phone_number", null: false
+    t.text "message", null: false
+    t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.datetime "deletedAt"
-    t.index ["deletedAt"], name: "index_contacts_on_deletedAt"
+    t.index ["deleted_at"], name: "index_contacts_on_deleted_at"
   end
 
   create_table "members", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -87,9 +85,9 @@ ActiveRecord::Schema.define(version: 2021_07_29_170547) do
     t.string "linkedin_url"
     t.string "description"
     t.datetime "deleted_at"
-    t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["deleted_at"], name: "index_members_on_deleted_at"
   end
 
   create_table "news", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -97,7 +95,6 @@ ActiveRecord::Schema.define(version: 2021_07_29_170547) do
     t.bigint "user_id"
     t.string "name", null: false
     t.text "content", null: false
-    t.string "image_url", null: false
     t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -113,7 +110,6 @@ ActiveRecord::Schema.define(version: 2021_07_29_170547) do
     t.string "email", null: false
     t.text "welcome_text", null: false
     t.text "about_us_text"
-    t.string "image_url"
     t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -121,7 +117,7 @@ ActiveRecord::Schema.define(version: 2021_07_29_170547) do
   end
 
   create_table "roles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -129,8 +125,7 @@ ActiveRecord::Schema.define(version: 2021_07_29_170547) do
 
   create_table "slides", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "organization_id"
-    t.string "image_url", null: false
-    t.text "text"
+    t.text "text", null: false
     t.integer "order"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -139,8 +134,7 @@ ActiveRecord::Schema.define(version: 2021_07_29_170547) do
 
   create_table "testimonials", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
-    t.text "content"
-    t.string "image_url"
+    t.text "content", null: false
     t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -153,10 +147,10 @@ ActiveRecord::Schema.define(version: 2021_07_29_170547) do
     t.string "last_name", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
-    t.string "image_url"
     t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
   end
