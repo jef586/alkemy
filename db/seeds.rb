@@ -18,6 +18,8 @@ end
 p "#{User.count} created users"
 p "#{Role.count} created roles"
 p "#{New.count} created news"
+p "#{Commentary.count} created news"
+
 
 # Activities instances
 

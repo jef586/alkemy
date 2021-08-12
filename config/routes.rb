@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       resources :activities
       resources :users
       resources :commentaries
+      resources :contacts
     end
   end
 end
