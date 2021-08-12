@@ -6,8 +6,8 @@ class Slide < ApplicationRecord
   # Associations
   belongs_to :organization
   # Validations
-  validates :image_url,
-            :text,
+  ## TODO add proper image validations
+  validates :text,
             presence: true
 
   validates :order, numericality: { only_integer: true }, allow_nil: true
