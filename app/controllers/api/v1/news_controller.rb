@@ -32,15 +32,6 @@ module Api
           @new ||= New.find(params[:id])
         end
 
-        def news
-          @news ||= fetch_news
-        end
-
-        def fetch_news
-          news = New.all
-          news
-        end
-
         def create_new_params
           params.permit(
             name,
