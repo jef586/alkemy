@@ -34,10 +34,10 @@ module Api
 
         def create_new_params
           params.permit(
-            name,
-            content,
-            image_url,
-            category_id
+            :name,
+            :content,
+            :image_url,
+            :category_id
           )
         end
     end
