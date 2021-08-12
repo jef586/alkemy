@@ -8,6 +8,8 @@ module Api
       end
 
       def show
+        # to do implement only admin privilege
+        render json: category, serializer: Categories::CategorySerializer, status: :ok
       end
 
       def update
