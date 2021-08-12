@@ -5,8 +5,7 @@ module Api
     class NewSerializer < ApplicationSerializer
       attributes :id,
                  :name,
-                 :content,
-                 :image_url
+                 :content
     end
   end
 end

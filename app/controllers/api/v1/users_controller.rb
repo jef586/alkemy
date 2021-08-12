@@ -39,7 +39,7 @@ module Api
         end
 
         def user_params
-          params.permit(:first_name, :last_name, :email, :password, :image_url)
+          params.permit(:first_name, :last_name, :email, :password)
         end
 
         def render_error
