@@ -7,7 +7,6 @@ class CreateOrganizations < ActiveRecord::Migration[6.1]
       t.string :email, null: false
       t.text :welcome_text, null: false
       t.text :about_us_text
-      t.string :image_url
       t.datetime :deleted_at
 
       t.timestamps
