@@ -2,8 +2,7 @@ class CreateCategories < ActiveRecord::Migration[6.1]
   def change
     create_table :categories do |t|
       t.string :name, null: false
-      t.text :description
-      t.string :image_url
+      t.text :description, null: false
       t.datetime :deleted_at
 
       t.timestamps
