@@ -9,6 +9,6 @@ module Api
                  :instagram_url,
                  :linkedin_url,
                  :description
-      end
+    end
   end
 end
