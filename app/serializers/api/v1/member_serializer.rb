@@ -8,8 +8,7 @@ module Api
                  :facebook_url,
                  :instagram_url,
                  :linkedin_url,
-                 :description,
-                 :image_url
-    end
+                 :description
+      end
   end
 end

@@ -7,9 +7,7 @@ module Auth
                  :role,
                  :first_name,
                  :last_name,
-                 :email,
-                 :image_url
-
+                 :email
       def role
         object.role.name
       end
