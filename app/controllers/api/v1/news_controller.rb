@@ -11,7 +11,8 @@ module Api
       end
 
       def create
-        create_new = current_user.news.new(create_new_params)
+        create_new = New.new(create_new_params)
+        create_new.user = @current_user
         create_new.save
 
         if create_new.persisted?
@@ -36,7 +37,6 @@ module Api
           params.permit(
             :name,
             :content,
-            :image_url,
             :category_id
           )
         end
