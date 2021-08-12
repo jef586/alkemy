@@ -7,17 +7,13 @@ client = Role.create(name: "Client")
 visitor = Role.create(name: "Visitor")
 
 10.times do
-    User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "123456", role: administrator)
+    admin = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "123456", role: administrator)
+    New.create(name: Faker::Book.title, content: Faker::Lorem.paragraph, image_url: Faker::Internet.url(host: 'example.com', path: '/image.url'), user: admin)
 end
 
 10.times do
-    user = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password_digest: "client", role: client)
-    New.create(name: Faker::Book.title, content: Faker::Lorem.paragraph, user: user)
+    User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "client", role: client)
 end
-
-p "#{User.count} created users"
-p "#{Role.count} created roles"
-p "#{New.count} created news"
 
 # Activities instances
 
@@ -69,12 +65,42 @@ paseos_recreativos_y_educativos = Activity.create(
     image: "Image"
 )
 
-p "#{Activity.count} created activities" 
+# Categories Instances
 
-# Categories instances
+CATEGORIES = %w{ Educacion Ocio Novedades Cultura Noticias Tecnologia }
 
-10.times do
-    category = Category.create(name: Faker::Lorem.word, description: Faker::Lorem.sentence, image_url: "https://source.unsplash.com/random")
+CATEGORIES.each do |category|
+    Category.create!(
+        name: category,
+        description: 'description',        
+    )
 end
 
-p "#{Category.count} created categories" 
+
+# Members instance
+
+10.times do
+    Member.create(name: Faker::Name.name, facebook_url: Faker::Internet.url(host: "facebook.com"), instagram_url: Faker::Internet.url(host: "instagram.com"), linkedin_url: Faker::Internet.url(host: "linkedin.com"), description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image_url: Faker::Internet.url(host: "example.com", path: "/image.jpg"))
+end
+
+# News instances
+
+admin = User.create(first_name: "Admin", last_name: "Admin", email: "admin@admin.com", password: "password", role: administrator)
+
+10.times do
+    New.create(name: Faker::Book.title, content: Faker::Lorem.paragraph, image_url: Faker::Internet.url(host: 'example.com', path: '/image.url'), user: admin)
+end
+
+# Commentary instances
+
+usuario = User.create(first_name: "User", last_name: "User", email: "user@user.com", password: "password", role: client)
+
+10.times do
+    Commentary.create(body: Faker::Lorem.paragraph, user: usuario)
+end
+
+p "#{User.count} created users"
+p "#{Role.count} created roles"
+p "#{New.count} created news"
+p "#{Commentary.count} created comments"
+p "#{Category.count} created categories"
