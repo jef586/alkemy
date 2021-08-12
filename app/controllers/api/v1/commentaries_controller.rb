@@ -36,15 +36,6 @@ module Api
           @commentary ||= @current_user.commentaries.find(params[:id])
         end
 
-        def commentaries
-          @commentaries ||= fetch_commentaries
-        end
-
-        def fetch_commentaries
-          commentaries = Commentary.all
-          commentaries
-        end
-
         def update_commentary_params
           params.permit(
               :body
