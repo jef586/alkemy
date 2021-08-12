@@ -2,10 +2,10 @@
 
 module Api
   module V1
-    class NewSerializer < ApplicationSerializer
+    class ContactSerializer < ApplicationSerializer
       attributes :id,
                  :name,
-                 :content
+                 :phone_number
     end
   end
 end

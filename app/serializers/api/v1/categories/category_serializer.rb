@@ -6,8 +6,7 @@ module Api
       class CategorySerializer < ApplicationSerializer
         attributes :id,
                    :name,
-                   :description,
-                   :image_url
+                   :description
       end
     end
   end

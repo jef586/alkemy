@@ -7,7 +7,6 @@ module Auth
                :first_name,
                :last_name,
                :email,
-               :image_url,
                :expires_at,
                :token
 
