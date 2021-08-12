@@ -15,7 +15,7 @@ module Api
 
       def update
         if user.update(user_params)
-          show
+          render json: user, serializer: UserSerializer, status: :ok
         else
           render_error
         end
@@ -43,8 +43,7 @@ module Api
         end
 
         def render_error
-          render json: { errors: @user.errors.full_messages },
-                 status: :unprocessable_entity
+          render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
         end
     end
   end
