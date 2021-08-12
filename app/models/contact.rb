@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Contact < ApplicationRecord
-  acts_as_paranoid column: :deletedAt
+  acts_as_paranoid
 
   # Validations
   validates :name,

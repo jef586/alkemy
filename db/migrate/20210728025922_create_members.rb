@@ -7,9 +7,9 @@ class CreateMembers < ActiveRecord::Migration[6.1]
       t.string :linkedin_url
       t.string :description
       t.datetime :deleted_at
-      t.string :image_url
 
       t.timestamps
     end
+    add_index :members, :deleted_at
   end
 end
