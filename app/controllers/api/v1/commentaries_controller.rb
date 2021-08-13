@@ -3,23 +3,37 @@
 module Api
   module V1
     class CommentariesController < ApiController
-      load_and_authorize_resource
-
       def index
-        @commentay_index = Commentary.accessible_by(current_ability)
+        render json: @commentaries
       end
 
       def show
       end
 
-      def create
+      def update
+        if commentary.update(update_commentary_params)
+          render json: commentary, serializer: CommentarySerializer, status: :ok
+        else
+          render json: { error: "We can't update the data" }, status: :unprocessable_entity
+        end
       end
 
-      def update
+      def create
       end
 
       def destroy
       end
+
+      private
+        def commentary
+          @commentary ||= @current_user.commentaries.find(params[:id])
+        end
+
+        def update_commentary_params
+          params.permit(
+              :body
+            )
+        end
     end
   end
 end

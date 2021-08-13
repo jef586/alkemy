@@ -6,13 +6,12 @@ class Ability
   def initialize(user)
     can :read, Commentary, published: true
 
-    return unless user.present?
-
-    can [:read, :update, :create, :destroy], Member, user: user
-    can [:read, :update, :create, :destroy], Commentary, user: user
-
-    return unless user.admin?
-
-    can :manage, :all
+    if user.role.name == "Administrator"
+      can :manage, :all
+    elsif user.role.name == "Regular"
+      can [:read, :update, :create, :destroy], Commentary, user: user
+    else
+      can [:read], Commentary
+    end
   end
 end

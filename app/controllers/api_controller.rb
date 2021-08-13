@@ -2,6 +2,9 @@
 
 class ApiController < ApplicationController
   before_action :authorize_request
+  load_and_authorize_resource
+
+  attr_accessor :current_user
 
   def not_found
     render json: { error: "not_found" }
@@ -20,9 +23,8 @@ class ApiController < ApplicationController
     end
     end
 
-    private
-      def current_user
-        return unless session[:user_id]
-        @current_user ||= User.find(session[:user_id])
-      end
+  private
+    def current_user
+      @current_user = User.find(@decoded[:user_id])
+    end
 end
