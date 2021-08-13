@@ -11,9 +11,7 @@ module Api
       end
 
       def create
-        create_new = New.new(create_new_params)
-        create_new.user = @current_user
-        create_new.save
+        create_new = New.create(create_new_params)
 
         if create_new.persisted?
           render json: create_new, serializer: NewSerializer, status: :created
@@ -38,7 +36,7 @@ module Api
             :name,
             :content,
             :category_id
-          )
+          ).merge(user: current_user)
         end
     end
   end
