@@ -18,6 +18,8 @@ Rails.application.routes.draw do
       resources :news
       resources :activities
       resources :users
+      resources :commentaries
+      resources :contacts
       get "organization/public", to:"organization#public"
     end
   end
