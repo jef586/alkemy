@@ -65,6 +65,19 @@ Organization.destroy_all
     Somos_mas = Organization.create(name: "Somos Más", image_url: "https://drive.google.com/file/d/1-j70Zmn2B1-0T_67JHJbNLKkI9sACMNi/view?usp=sharing", phone: "1160112988", address: Faker::Address.full_address, email: "somosfundacionmas@gmail.com", welcome_text: Faker::Lorem.sentence)
 
 p "#{Organization.count} created Organization"
+#commentaries instances
+first_commentary = Commentary.create(
+    body: "Hola! este es mi primer comentario"
+)
+
+seccond_commentary = Commentary.create(
+    body: "El proyecto de ayuda escolar es muy interesante"
+)
+
+new_commentary = Commentary.create(
+    body: "Gracias por el trabajo que estan haciendo para la comunidad"
+)
+
 # Categories Instances
 
 CATEGORIES = %w{ Educacion Ocio Novedades Cultura Noticias Tecnologia }

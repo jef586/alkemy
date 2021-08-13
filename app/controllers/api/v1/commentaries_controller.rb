@@ -28,11 +28,16 @@ module Api
       end
 
       def destroy
+        if commentary.present?
+          commentary.destroy
+        end
+
+        head :no_content
       end
 
       private
         def commentary
-          @commentary ||= @current_user.commentaries.find(params[:id])
+          @commentary ||= current_user.commentaries.find(params[:id])
         end
 
         def update_commentary_params
