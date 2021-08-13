@@ -18,6 +18,13 @@ module Api
       end
 
       def create
+        create_commentary = Commentary.new(create_commentary_params)
+
+        if create_commentary.save
+          render json: create_commentary, serializer: CommentarySerializer, status: :created
+        else
+          render json: { errors: create_commentary.errors }, status: :unprocessable_entity
+        end
       end
 
       def destroy
@@ -32,6 +39,13 @@ module Api
           params.permit(
               :body
             )
+        end
+
+        def create_commentary_params
+          params.permit(
+              :body,
+              :new_id
+            ).merge(user: current_user)
         end
     end
   end
