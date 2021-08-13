@@ -69,8 +69,8 @@ paseos_recreativos_y_educativos = Activity.create(
     image: "Image"
 )
 
-10.times do
-    organization = Organization.create(name: Faker::Company.name, image_url: "https://source.unsplash.com/random", phone: Faker::PhoneNumber.phone_number, address: Faker::Address.full_address, email: Faker::Internet.email, welcome_text: Faker::Lorem.sentence)
-end
+Organization.destroy_all
 
-p "#{Organization.count} created Organizations"
+    Somos_mas = Organization.create(name: "Somos Más", image_url: "https://drive.google.com/file/d/1-j70Zmn2B1-0T_67JHJbNLKkI9sACMNi/view?usp=sharing", phone: "1160112988", address: Faker::Address.full_address, email: "somosfundacionmas@gmail.com", welcome_text: Faker::Lorem.sentence)
+
+p "#{Organization.count} created Organization"

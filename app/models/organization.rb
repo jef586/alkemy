@@ -4,6 +4,7 @@ class Organization < ApplicationRecord
   # Softdelete
   acts_as_paranoid
 
+
   # Active Storage Image
   has_one_attached :image
 
