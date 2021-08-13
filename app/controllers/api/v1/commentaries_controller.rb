@@ -37,9 +37,9 @@ module Api
 
       private
         def commentary
-          @commentary ||= @current_user.commentaries.find(params[:id])
+          @commentary ||= current_user.commentaries.find(params[:id])
         end
-        
+
         def update_commentary_params
           params.permit(
               :body
