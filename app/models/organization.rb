@@ -8,6 +8,7 @@ class Organization < ApplicationRecord
   has_one_attached :image
 
   # Associations
+  belongs_to :user
   has_many :slides
 
   # Validations
