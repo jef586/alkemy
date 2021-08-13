@@ -60,15 +60,28 @@ paseos_recreativos_y_educativos = Activity.create(
     content: "Estos paseos están pensados para promover la participación y sentido de pertenencia de los niños, niñas y adolescentes al área educativa."
 )
 
+#commentaries instances
+first_commentary = Commentary.create(
+    body: "Hola! este es mi primer comentario"
+)
+
+seccond_commentary = Commentary.create(
+    body: "El proyecto de ayuda escolar es muy interesante"
+)
+
+new_commentary = Commentary.create(
+    body: "Gracias por el trabajo que estan haciendo para la comunidad"
+)
+
 # Categories Instances
 
 CATEGORIES = %w{ Educacion Ocio Novedades Cultura Noticias Tecnologia }
 
 CATEGORIES.each do |category|
-    Category.create!(
-        name: category,
-        description: 'description',        
-    )
+  Category.create!(
+      name: category,
+      description: 'description',        
+  )
 end
 
 
@@ -83,7 +96,7 @@ end
 admin = User.create(first_name: "Admin", last_name: "Admin", email: "admin@admin.com", password: "password", role: administrator)
 
 10.times do
-    New.create(name: Faker::Book.title, content: Faker::Lorem.paragraph, user: admin)
+    New.create(name: Faker::Book.title, content: Faker::Lorem.paragraph, user: admin, category: Category.first)
 end
 
 # Commentary instances
@@ -91,7 +104,7 @@ end
 usuario = User.create(first_name: "User", last_name: "User", email: "user@user.com", password: "password", role: client)
 
 10.times do
-    Commentary.create(body: Faker::Lorem.paragraph, user: usuario)
+    Commentary.create(body: Faker::Lorem.paragraph, user: usuario, new: New.last)
 end
 
 p "#{User.count} created users"
