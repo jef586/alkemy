@@ -60,6 +60,19 @@ paseos_recreativos_y_educativos = Activity.create(
     content: "Estos paseos están pensados para promover la participación y sentido de pertenencia de los niños, niñas y adolescentes al área educativa."
 )
 
+#commentaries instances
+first_commentary = Commentary.create(
+    body: "Hola! este es mi primer comentario"
+)
+
+seccond_commentary = Commentary.create(
+    body: "El proyecto de ayuda escolar es muy interesante"
+)
+
+new_commentary = Commentary.create(
+    body: "Gracias por el trabajo que estan haciendo para la comunidad"
+)
+
 # Categories Instances
 
 CATEGORIES = %w{ Educacion Ocio Novedades Cultura Noticias Tecnologia }
