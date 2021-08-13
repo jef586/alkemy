@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       resources :users
       resources :commentaries
       resources :contacts
-      get "organization/public", to:"organization#public"
+      resource :organization, only: [:show]
     end
   end
 end

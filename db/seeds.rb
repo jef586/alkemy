@@ -60,11 +60,6 @@ paseos_recreativos_y_educativos = Activity.create(
     content: "Estos paseos están pensados para promover la participación y sentido de pertenencia de los niños, niñas y adolescentes al área educativa."
 )
 
-Organization.destroy_all
-
-    Somos_mas = Organization.create(name: "Somos Más", image_url: "https://drive.google.com/file/d/1-j70Zmn2B1-0T_67JHJbNLKkI9sACMNi/view?usp=sharing", phone: "1160112988", address: Faker::Address.full_address, email: "somosfundacionmas@gmail.com", welcome_text: Faker::Lorem.sentence)
-
-p "#{Organization.count} created Organization"
 #commentaries instances
 first_commentary = Commentary.create(
     body: "Hola! este es mi primer comentario"
@@ -85,10 +80,9 @@ CATEGORIES = %w{ Educacion Ocio Novedades Cultura Noticias Tecnologia }
 CATEGORIES.each do |category|
   Category.create!(
       name: category,
-      description: 'description',        
+      description: 'description'   
   )
 end
-
 
 # Members instance
 
@@ -112,8 +106,20 @@ usuario = User.create(first_name: "User", last_name: "User", email: "user@user.c
     Commentary.create(body: Faker::Lorem.paragraph, user: usuario, new: New.last)
 end
 
+# Organization
+
+ong = Organization.create(
+    user: admin,
+    name: "Somos Más",
+    welcome_text: Faker::Lorem.paragraph,
+    address: "Lujan 345",
+    email: "somosfundacionmas@gmail.com",
+    phone: "1160112988"
+)
+
 p "#{User.count} created users"
 p "#{Role.count} created roles"
 p "#{New.count} created news"
 p "#{Commentary.count} created comments"
 p "#{Category.count} created categories"
+p "#{Organization.count} created organization"
