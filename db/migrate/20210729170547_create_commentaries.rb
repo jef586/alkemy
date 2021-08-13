@@ -3,7 +3,7 @@ class CreateCommentaries < ActiveRecord::Migration[6.1]
     create_table :commentaries do |t|
       t.belongs_to :user
       t.belongs_to :new
-      t.text :body
+      t.text :body, null: false
 
       t.timestamps
     end

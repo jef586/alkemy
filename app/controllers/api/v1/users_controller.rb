@@ -14,6 +14,11 @@ module Api
       end
 
       def update
+        if user.update(user_params)
+          render json: user, serializer: UserSerializer, status: :ok
+        else
+          render_error
+        end
       end
 
       def destroy
@@ -31,6 +36,14 @@ module Api
 
         def user
           @user ||= User.find(params[:id])
+        end
+
+        def user_params
+          params.permit(:first_name, :last_name, :email, :password)
+        end
+
+        def render_error
+          render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
         end
     end
   end
