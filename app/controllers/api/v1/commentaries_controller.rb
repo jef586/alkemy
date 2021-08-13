@@ -18,7 +18,7 @@ module Api
       end
 
       def create
-        create_commentary = @current_user.commentaries.new(create_commentary_params)
+        create_commentary = Commentary.new(create_commentary_params)
         create_commentary.save
 
         if create_commentary.persisted?
@@ -46,7 +46,7 @@ module Api
           params.permit(
               :body,
               :new_id
-            )
+            ).merge(user: current_user)
         end
     end
   end
