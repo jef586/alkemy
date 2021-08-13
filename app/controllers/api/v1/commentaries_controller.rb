@@ -19,9 +19,8 @@ module Api
 
       def create
         create_commentary = Commentary.new(create_commentary_params)
-        create_commentary.save
 
-        if create_commentary.persisted?
+        if create_commentary.save
           render json: create_commentary, serializer: CommentarySerializer, status: :created
         else
           render json: { errors: create_commentary.errors }, status: :unprocessable_entity
