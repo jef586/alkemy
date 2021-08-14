@@ -24,13 +24,14 @@ module Api
 
       def destroy
       end
-      Private
-      def create_activity_params
-        params.permit(
-            :name,
-            :content
-          )
-      end
+
+      private
+        def create_activity_params
+          params.permit(
+              :name,
+              :content
+            )
+        end
     end
   end
 end
