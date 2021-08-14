@@ -4,14 +4,13 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :read, Commentary, published: true
-
-    if user.role.name == "Administrator"
+    case user.role.name
+    when "Administrator"
       can :manage, :all
-    elsif user.role.name == "Regular"
-      can [:read, :update, :create, :destroy], Commentary, user: user
+    when "Regular"
+      can [:read, :create, :update, :destroy], Commentary, user: user
     else
-      can [:read], Commentary
+      can :read, Commentary, published: true
     end
   end
 end

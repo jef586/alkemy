@@ -7,16 +7,14 @@ module Api
       end
 
       def show
-        render json: new, serializer: NewSerializer, status: :ok
+        render json: @new, serializer: NewSerializer, status: :ok
       end
 
       def create
-        create_new = New.create(create_new_params)
-
-        if create_new.persisted?
-          render json: create_new, serializer: NewSerializer, status: :created
+        if @new.save
+          render json: @new, serializer: NewSerializer, status: :created
         else
-          render json: { errors: create_new.errors }, status: :unprocessable_entity
+          render json: { errors: @new.errors }, status: :unprocessable_entity
         end
       end
 
@@ -27,11 +25,7 @@ module Api
       end
 
       private
-        def new
-          @new ||= New.find(params[:id])
-        end
-
-        def create_new_params
+        def create_params
           params.permit(
             :name,
             :content,

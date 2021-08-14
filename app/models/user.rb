@@ -10,11 +10,8 @@ class User < ApplicationRecord
   # Associations
   belongs_to :role, optional: true
   has_many :commentaries
-<<<<<<< Updated upstream
   has_many :news
   has_one :organization
-=======
->>>>>>> Stashed changes
 
   # Authentication
   has_secure_password

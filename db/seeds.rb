@@ -101,7 +101,7 @@ end
 
 # Commentary instances
 
-usuario = User.create(first_name: "User", last_name: "User", email: "user@user.com", password: "password", role: client)
+usuario = User.create(first_name: "User", last_name: "User", email: "user@user.com", password: "password", role: regular)
 
 10.times do
     Commentary.create(body: Faker::Lorem.paragraph, user: usuario, new: New.last)
@@ -133,7 +133,7 @@ end
 # Members instance
 
 10.times do
-    Member.create(name: Faker::Name.name, facebook_url: Faker::Internet.url(host: "facebook.com"), instagram_url: Faker::Internet.url(host: "instagram.com"), linkedin_url: Faker::Internet.url(host: "linkedin.com"), description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image_url: Faker::Internet.url(host: "example.com", path: "/image.jpg"))
+    Member.create(name: Faker::Name.name, facebook_url: Faker::Internet.url(host: "facebook.com"), instagram_url: Faker::Internet.url(host: "instagram.com"), linkedin_url: Faker::Internet.url(host: "linkedin.com"), description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
 end
 
 # News instances
@@ -141,7 +141,7 @@ end
 admin = User.create(first_name: "Admin", last_name: "Admin", email: "admin@admin.com", password: "password", role: administrator)
 
 10.times do
-    New.create(name: Faker::Book.title, content: Faker::Lorem.paragraph, image_url: Faker::Internet.url(host: 'example.com', path: '/image.url'), user: admin)
+    New.create(name: Faker::Book.title, content: Faker::Lorem.paragraph, user: admin)
 end
 
 # Commentary instances

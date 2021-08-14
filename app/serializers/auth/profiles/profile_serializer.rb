@@ -7,13 +7,7 @@ module Auth
                  :role,
                  :first_name,
                  :last_name,
-<<<<<<< Updated upstream
                  :email
-=======
-                 :email,
-                 :image_url
-
->>>>>>> Stashed changes
       def role
         object.role.name
       end
