@@ -7,17 +7,13 @@ client = Role.create(name: "Client")
 visitor = Role.create(name: "Visitor")
 
 10.times do
-    User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "123456", role: administrator)
+    admin = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "123456", role: administrator)
+    New.create(name: Faker::Book.title, content: Faker::Lorem.paragraph, user: admin)
 end
 
 10.times do
-    user = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password_digest: "client", role: client)
-    New.create(name: Faker::Book.title, content: Faker::Lorem.paragraph, user: user)
+    User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "client", role: client)
 end
-
-p "#{User.count} created users"
-p "#{Role.count} created roles"
-p "#{New.count} created news"
 
 # Activities instances
 
@@ -27,8 +23,7 @@ apoyo_escolar_nivel_primario = Activity.create(
     contraturno, Los sábados también se realiza el taller para niños y niñas que asisten a la escuela doble turno. Tenemos un espacio especial para los de 1er 
     grado 2 veces por semana ya que ellos necesitan atención especial! Actualmente se encuentran inscriptos a este programa 150 niños y niñas de 6 a 15 años. 
     Este taller está pensado para ayudar a los alumnos con el material que traen de la escuela, también tenemos una docente que les da clases de lengua y matemática 
-    con una planificación propia que armamos en Manos para nivelar a los niños y que vayan con más herramientas a la escuela.",
-    image: "Image"
+    con una planificación propia que armamos en Manos para nivelar a los niños y que vayan con más herramientas a la escuela."
 )
 
 apoyo_escolar_nivel_secundario = Activity.create(
@@ -36,8 +31,7 @@ apoyo_escolar_nivel_secundario = Activity.create(
     content: "Del mismo modo que en primaria, este taller es el corazón del área secundaria. Se realizan talleres de lunes a viernes de 10 a 12 horas y de 16 a 18 
     horas en el contraturno. Actualmente se encuentran inscriptos en el taller 50 adolescentes entre 13 y 20 años. Aquí los jóvenes se presentan con el material que 
     traen del colegio y una docente de la institución y un grupo de voluntarios los recibe para ayudarlos a estudiar o hacer la tarea. Este espacio también es utilizado 
-    por los jóvenes como un punto de encuentro y relación entre ellos y la institución.",
-    image: "Image"
+    por los jóvenes como un punto de encuentro y relación entre ellos y la institución."
 )
 
 tutorias = Activity.create(
@@ -53,19 +47,79 @@ tutorias = Activity.create(
     - Ayudantías (Los que comienzan el 2do años del programa deben elegir una de las actividades que se realizan en la institución para acompañarla e ir conociendo 
         como es el mundo laboral que les espera).
     - Acompañamiento escolar y familiar (Los tutores son encargados de articular con la familia y con las escuelas de los jóvenes para monitorear el estado de los tutoreados)
-    - Beca estímulo (los jóvenes reciben una beca estímulo que es supervisada por los tutores). Actualmente se encuentran inscriptos en el programa 30 adolescentes.",
-    image: "Image"
+    - Beca estímulo (los jóvenes reciben una beca estímulo que es supervisada por los tutores). Actualmente se encuentran inscriptos en el programa 30 adolescentes."
 )   
 
 taller_arte_y_cuentos = Activity.create(
     name: "Taller de arte y cuentos",
-    content: "Taller literario y de manualidades que se realiza semanalmente.",
-    image: "Image"
+    content: "Taller literario y de manualidades que se realiza semanalmente."
 )    
 
 paseos_recreativos_y_educativos = Activity.create(
     name: "Paseos recreativos y educativos",
-    content: "Estos paseos están pensados para promover la participación y sentido de pertenencia de los niños, niñas y adolescentes al área educativa.",
-    image: "Image"
+    content: "Estos paseos están pensados para promover la participación y sentido de pertenencia de los niños, niñas y adolescentes al área educativa."
 )
 
+#commentaries instances
+first_commentary = Commentary.create(
+    body: "Hola! este es mi primer comentario"
+)
+
+seccond_commentary = Commentary.create(
+    body: "El proyecto de ayuda escolar es muy interesante"
+)
+
+new_commentary = Commentary.create(
+    body: "Gracias por el trabajo que estan haciendo para la comunidad"
+)
+
+# Categories Instances
+
+CATEGORIES = %w{ Educacion Ocio Novedades Cultura Noticias Tecnologia }
+
+CATEGORIES.each do |category|
+  Category.create!(
+      name: category,
+      description: 'description'   
+  )
+end
+
+# Members instance
+
+10.times do
+    Member.create(name: Faker::Name.name, facebook_url: Faker::Internet.url(host: "facebook.com"), instagram_url: Faker::Internet.url(host: "instagram.com"), linkedin_url: Faker::Internet.url(host: "linkedin.com"), description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+end
+
+# News instances
+
+admin = User.create(first_name: "Admin", last_name: "Admin", email: "admin@admin.com", password: "password", role: administrator)
+
+10.times do
+    New.create(name: Faker::Book.title, content: Faker::Lorem.paragraph, user: admin, category: Category.first)
+end
+
+# Commentary instances
+
+usuario = User.create(first_name: "User", last_name: "User", email: "user@user.com", password: "password", role: client)
+
+10.times do
+    Commentary.create(body: Faker::Lorem.paragraph, user: usuario, new: New.last)
+end
+
+# Organization
+
+ong = Organization.create(
+    user: admin,
+    name: "Somos Más",
+    welcome_text: Faker::Lorem.paragraph,
+    address: "Lujan 345",
+    email: "somosfundacionmas@gmail.com",
+    phone: "1160112988"
+)
+
+p "#{User.count} created users"
+p "#{Role.count} created roles"
+p "#{New.count} created news"
+p "#{Commentary.count} created comments"
+p "#{Category.count} created categories"
+p "#{Organization.count} created organization"

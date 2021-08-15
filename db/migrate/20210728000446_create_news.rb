@@ -5,7 +5,6 @@ class CreateNews < ActiveRecord::Migration[6.1]
       t.belongs_to :user
       t.string :name, null: false
       t.text :content, null: false
-      t.string :image_url, null: false
       t.datetime :deleted_at
 
       t.timestamps

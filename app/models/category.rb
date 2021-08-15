@@ -9,6 +9,14 @@ class Category < ApplicationRecord
             :description,
             presence: true
 
+  validate :name_must_be_a_string
+
   # Associations
   has_many :news
+
+  def name_must_be_a_string
+    unless name.is_a? String
+      errors.add(:name, :name_must_be_a_string)
+    end
+  end
 end
