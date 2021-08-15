@@ -3,7 +3,8 @@
 module Api
   module V1
     class ActivitySerializer < ApplicationSerializer
-      attributes :name,
+      attributes :id,
+                 :name,
                  :content
     end
   end
