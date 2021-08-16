@@ -3,9 +3,11 @@
 class Contact < ApplicationRecord
   acts_as_paranoid
 
+  # Associations
+  belongs_to :from_user, class_name: "User"
+
   # Validations
   validates :name,
-            :phone,
-            :message,
+            :phone_number,
             presence: true
 end
