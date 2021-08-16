@@ -8,6 +8,7 @@ class Category < ApplicationRecord
   validates :name,
             :description,
             presence: true
+  validate :name_must_be_a_string
 
   validate :name_must_be_a_string
 

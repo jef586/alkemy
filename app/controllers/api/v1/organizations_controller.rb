@@ -6,7 +6,7 @@ module Api
       skip_before_action :authorize_request, only: [:show]
 
       def show
-        render json: organization, serializer: OrganizationSerializer, status: :ok
+        render json: @organization, serializer: OrganizationSerializer, status: :ok
       end
 
       def create
