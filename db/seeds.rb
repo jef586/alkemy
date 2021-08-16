@@ -117,9 +117,25 @@ ong = Organization.create(
     phone: "1160112988"
 )
 
+
+#Contacts instances
+
+contact = Contact.create(
+    name: "Jose Lopez",
+    phone: "115467893"
+)
+
+new_contact = Contact.create(
+    name: "Lalo Landa",
+    phone: "1154675546"
+)
+
+
+
 p "#{User.count} created users"
 p "#{Role.count} created roles"
 p "#{New.count} created news"
 p "#{Commentary.count} created comments"
 p "#{Category.count} created categories"
 p "#{Organization.count} created organization"
+p "#{Contact.count} created contacts"
