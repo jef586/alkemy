@@ -8,7 +8,8 @@ class Ability
     when "Administrator"
       can :manage, :all
     when "Regular"
-      can [:read, :create, :update, :destroy], Commentary, user: user
+      can [:create, :update, :destroy], Commentary, user: user
+      can [:read], Commentary
     else
       can :read, Commentary, published: true
     end

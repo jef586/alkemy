@@ -11,7 +11,7 @@ module Api
       end
 
       def update
-        if @commentary.update(commentary_params)
+        if @commentary.update(update_params)
           render json: @commentary, serializer: CommentarySerializer, status: :ok
         else
           render json: { error: "We can't update the data" }, status: :unprocessable_entity
@@ -19,16 +19,33 @@ module Api
       end
 
       def create
+        if @commentary.save
+          render json: @commentary, serializer: CommentarySerializer, status: :created
+        else
+          render json: { errors: create_params.errors }, status: :unprocessable_entity
+        end
       end
 
       def destroy
+        if @commentary.present?
+          @commentary.destroy
+        end
+
+        head :no_content
       end
 
       private
-        def commentary_params
+        def update_params
           params.permit(
               :body
             )
+        end
+
+        def create_params
+          params.permit(
+              :body,
+              :new_id
+            ).merge(user: current_user)
         end
     end
   end
