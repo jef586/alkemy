@@ -26,7 +26,7 @@ Rails.application.routes.draw do
       resources :users
       resources :commentaries
       resources :contacts
-      resource :organization, only: [:show]
+      resource :organization, only: [:show, :update]
     end
   end
 end

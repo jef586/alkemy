@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :commentaries
   has_many :news
   has_one :organization
+  has_many :contacts
 
   # Authentication
   has_secure_password

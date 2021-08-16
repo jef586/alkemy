@@ -2,7 +2,7 @@
 
 module Api
   module V1
-    class UsersController < ApiController
+    class ContactsController < ApiController
       def index
         render json: @contacts, each_serializer: ContactSerializer, status: :ok
       end
