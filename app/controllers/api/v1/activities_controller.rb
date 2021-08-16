@@ -13,10 +13,25 @@ module Api
       end
 
       def create
+        create_activity = Activity.new(create_activity_params)
+
+        if create_activity.save
+          render json: create_activity, serializer: ActivitySerializer, status: :created
+        else
+          render json: { errors: create_activity.errors }, status: :unprocessable_entity
+        end
       end
 
       def destroy
       end
+
+      private
+        def create_activity_params
+          params.permit(
+              :name,
+              :content
+            )
+        end
     end
   end
 end
