@@ -43,8 +43,7 @@ This part of seed create ten members with all information nedeed to test the end
 
 ### News instances 
 
-This part of seed create an user with administrator role and ten news to test the endpoints of the News
-controller.
+This part of seed create an user with administrator role and ten news to test the endpoints of the News controller.
 
 ### Commentaries instances
 

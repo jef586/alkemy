@@ -27,6 +27,6 @@ class User < ApplicationRecord
   before_create :assign_default_role
 
   def assign_default_role
-    self.create_role(name: "regular") if self.role.blank?
+    self.create_role(name: "Regular") if self.role.blank?
   end
 end

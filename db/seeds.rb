@@ -3,16 +3,17 @@
 # Users instances 
 
 administrator = Role.create(name: "Administrator")
-client = Role.create(name: "Client")
+regular = Role.create(name: "Regular")
 visitor = Role.create(name: "Visitor")
 
 10.times do
     admin = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "123456", role: administrator)
+
     New.create(name: Faker::Book.title, content: Faker::Lorem.paragraph, user: admin)
 end
 
 10.times do
-    User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "client", role: client)
+    User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "regular", role: regular)
 end
 
 # Activities instances
@@ -100,7 +101,7 @@ end
 
 # Commentary instances
 
-usuario = User.create(first_name: "User", last_name: "User", email: "user@user.com", password: "password", role: client)
+usuario = User.create(first_name: "User", last_name: "User", email: "user@user.com", password: "password", role: regular)
 
 10.times do
     Commentary.create(body: Faker::Lorem.paragraph, user: usuario, new: New.last)
@@ -116,6 +117,17 @@ ong = Organization.create(
     email: "somosfundacionmas@gmail.com",
     phone: "1160112988"
 )
+
+# Categories Instances
+
+CATEGORIES = %w{ Educacion Ocio Novedades Cultura Noticias Tecnologia }
+
+CATEGORIES.each do |category|
+    Category.create!(
+        name: category,
+        description: 'description',        
+    )
+end
 
 p "#{User.count} created users"
 p "#{Role.count} created roles"

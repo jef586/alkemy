@@ -3,14 +3,8 @@
 module Api
   module V1
     class MembersController < ApiController
-      load_and_authorize_resource
-
       def index
-<<<<<<< HEAD
-        @member_index = Member.accessible_by(current_ability)
-=======
-        render json: members, each_serializer: MemberSerializer, status: :ok
->>>>>>> dev
+        render json: @members, each_serializer: MemberSerializer, status: :ok
       end
 
       def show
@@ -24,11 +18,6 @@ module Api
 
       def destroy
       end
-
-      private
-        def members
-          @members ||= Member.all
-        end
     end
   end
 end
