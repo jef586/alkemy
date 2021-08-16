@@ -69,13 +69,15 @@ ActiveRecord::Schema.define(version: 2021_07_29_170547) do
   end
 
   create_table "contacts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "from_user_id"
     t.string "name", null: false
-    t.integer "phone_number", null: false
-    t.text "message", null: false
+    t.string "phone_number", null: false
+    t.text "message"
     t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["deleted_at"], name: "index_contacts_on_deleted_at"
+    t.index ["from_user_id"], name: "index_contacts_on_from_user_id"
   end
 
   create_table "members", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
