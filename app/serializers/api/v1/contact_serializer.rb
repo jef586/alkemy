@@ -6,8 +6,7 @@ module Api
       attributes :id,
                  :name,
                  :phone_number,
-                 :email,
-                 :from_user_id
+                 :email
     end
   end
 end
