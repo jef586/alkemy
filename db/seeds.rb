@@ -2,14 +2,14 @@
 
 # Users instances 
 
-administrator = Role.create(name: "Administrator")
-regular = Role.create(name: "Regular")
-visitor = Role.create(name: "Visitor")
+administrator = Role.create(name: "administrator")
+regular = Role.create(name: "regular")
+visitor = Role.create(name: "visitor")
 
 10.times do
     admin = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "123456", role: administrator)
 
-    New.create(name: Faker::Book.title, content: Faker::Lorem.paragraph, user: admin)
+    Post.create(name: Faker::Book.title, content: Faker::Lorem.paragraph, user: admin)
 end
 
 10.times do
@@ -89,18 +89,18 @@ end
   Member.create(name: Faker::Name.name, facebook_url: Faker::Internet.url(host: "facebook.com"), instagram_url: Faker::Internet.url(host: "instagram.com"), linkedin_url: Faker::Internet.url(host: "linkedin.com"), description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
 end
 
-# News instances
+# Posts instances
 admin = User.create(first_name: "Admin", last_name: "Admin", email: "admin@admin.com", password: "password", role: administrator)
 
 10.times do
-  New.create(name: Faker::Book.title, content: Faker::Lorem.paragraph, user: admin, category: Category.first)
+  Post.create(name: Faker::Book.title, content: Faker::Lorem.paragraph, user: admin, category: Category.first)
 end
 
 # Commentary instances
 usuario = User.create(first_name: "User", last_name: "User", email: "user@user.com", password: "password", role: regular)
 
 10.times do
-  Commentary.create(body: Faker::Lorem.paragraph, user: usuario, new: New.last)
+  Commentary.create(body: Faker::Lorem.paragraph, user: usuario, post: Post.last)
 end
 
 # Organization
@@ -136,7 +136,7 @@ end
 admin = User.create(first_name: "Admin", last_name: "Admin", email: "admin@admin.com", password: "password", role: administrator)
 
 10.times do
-    New.create(name: Faker::Book.title, content: Faker::Lorem.paragraph, user: admin)
+    Post.create(name: Faker::Book.title, content: Faker::Lorem.paragraph, user: admin)
 end
 
 # Commentary instances
@@ -148,7 +148,7 @@ end
 
 p "#{User.count} created users"
 p "#{Role.count} created roles"
-p "#{New.count} created news"
+p "#{Post.count} created posts"
 p "#{Commentary.count} created comments"
 p "#{Category.count} created categories"
 p "#{Organization.count} created organization"

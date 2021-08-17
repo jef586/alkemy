@@ -3,6 +3,7 @@
 module Api
   module V1
     class OrganizationsController < ApiController
+      skip_load_and_authorize_resource
       skip_before_action :authorize_request, only: [:show]
 
       def show
@@ -10,15 +11,6 @@ module Api
       end
 
       def create
-      end
-
-      def update
-        # to do: implement only admin privilege
-        if organization.update(organization_parameters)
-          render json: organization, serializer: OrganizationSerializer, status: :ok
-        else
-          render json: organization.errors, status: :unprocessable_entity
-        end
       end
 
       def destroy

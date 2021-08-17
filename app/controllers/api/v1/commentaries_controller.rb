@@ -44,7 +44,7 @@ module Api
         def create_params
           params.permit(
               :body,
-              :new_id
+              :post_id
             ).merge(user: current_user)
         end
     end

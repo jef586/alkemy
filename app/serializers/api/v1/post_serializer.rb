@@ -2,7 +2,7 @@
 
 module Api
   module V1
-    class NewSerializer < ApplicationSerializer
+    class PostSerializer < ApplicationSerializer
       attributes :id,
                  :name,
                  :content

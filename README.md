@@ -41,9 +41,9 @@ This part of seed take real activities from the project with the purpose to popu
 
 This part of seed create ten members with all information nedeed to test the endpoints of the Members controller.
 
-### News instances 
+### Posts instances 
 
-This part of seed create an user with administrator role and ten news to test the endpoints of the News controller.
+This part of seed create an user with administrator role and ten posts to test the endpoints of the Posts controller.
 
 ### Commentaries instances
 

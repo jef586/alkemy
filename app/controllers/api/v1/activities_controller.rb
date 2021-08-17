@@ -13,12 +13,10 @@ module Api
       end
 
       def create
-        create_activity = Activity.new(create_activity_params)
-
-        if create_activity.save
-          render json: create_activity, serializer: ActivitySerializer, status: :created
+        if @activity.save
+          render json: @activity, serializer: ActivitySerializer, status: :created
         else
-          render json: { errors: create_activity.errors }, status: :unprocessable_entity
+          render json: { errors: @activity.errors }, status: :unprocessable_entity
         end
       end
 
@@ -26,7 +24,7 @@ module Api
       end
 
       private
-        def create_activity_params
+        def activity_params
           params.permit(
               :name,
               :content
