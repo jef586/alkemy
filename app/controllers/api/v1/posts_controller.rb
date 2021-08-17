@@ -19,6 +19,11 @@ module Api
       end
 
       def update
+        if @post.update(update_params)
+          render json: @post, serializer: Categories::PostSerializer, status: :ok
+        else
+          render json: @post.errors, status: :unprocessable_entity
+        end
       end
 
       def destroy
@@ -31,6 +36,9 @@ module Api
             :content,
             :category_id
           ).merge(user: current_user)
+        end
+        def update_params
+          params.permit(:name, :content, :category_id)
         end
     end
   end
