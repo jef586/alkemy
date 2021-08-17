@@ -9,6 +9,7 @@ class Ability
     elsif user.regular?
       can [:create, :update, :destroy], Commentary, user: user
       can [:read], Commentary
+      can [:create], Contact
     else
       can :read, Commentary, published: true
     end

@@ -5,7 +5,9 @@ module Api
     class ContactSerializer < ApplicationSerializer
       attributes :id,
                  :name,
-                 :phone_number
+                 :phone_number,
+                 :email,
+                 :from_user_id
     end
   end
 end
