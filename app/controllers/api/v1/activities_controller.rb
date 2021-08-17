@@ -10,6 +10,11 @@ module Api
       end
 
       def update
+        if @activity.update(update_params)
+          render json: @activity, serializer: ActivitySerializer, status: :ok
+        else
+          render json: { error: "We can't update the data" }, status: :unprocessable_entity
+        end
       end
 
       def create
@@ -29,6 +34,9 @@ module Api
               :name,
               :content
             )
+        end
+        def update_params
+          params.permit(:name, :content)
         end
     end
   end
