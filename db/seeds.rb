@@ -146,6 +146,11 @@ usuario = User.create(first_name: "User", last_name: "User", email: "user@user.c
     Commentary.create(body: Faker::Lorem.paragraph, user: usuario)
 end
 
+# Testimonial instances
+10.times do |i|
+  Testimonial.create(name: "Testimonio #{i}", content: "Contenido #{i}")
+end
+
 p "#{User.count} created users"
 p "#{Role.count} created roles"
 p "#{Post.count} created posts"
@@ -153,3 +158,4 @@ p "#{Commentary.count} created comments"
 p "#{Category.count} created categories"
 p "#{Organization.count} created organization"
 p "#{Contact.count} created contacts"
+p "#{Testimonial.count} created testimonials"
