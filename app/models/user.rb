@@ -10,7 +10,7 @@ class User < ApplicationRecord
   # Associations
   belongs_to :role, optional: true
   has_many :commentaries
-  has_many :news
+  has_many :posts
   has_one :organization
   has_many :contacts
 
@@ -29,5 +29,13 @@ class User < ApplicationRecord
 
   def assign_default_role
     self.create_role(name: "regular") if self.role.blank?
+  end
+
+  def admin?
+    role&.admin?
+  end
+
+  def regular?
+    role&.regular?
   end
 end

@@ -1,6 +1,6 @@
-class CreateNews < ActiveRecord::Migration[6.1]
+class CreatePosts < ActiveRecord::Migration[6.1]
   def change
-    create_table :news do |t|
+    create_table :posts do |t|
       t.belongs_to :category
       t.belongs_to :user
       t.string :name, null: false
@@ -9,6 +9,6 @@ class CreateNews < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
-    add_index :news, :deleted_at
+    add_index :posts, :deleted_at
   end
 end

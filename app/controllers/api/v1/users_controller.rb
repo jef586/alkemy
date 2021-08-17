@@ -4,7 +4,7 @@ module Api
   module V1
     class UsersController < ApiController
       def index
-        render json: users, each_serializer: Users::UserSerializer, status: :ok
+        render json: @users, each_serializer: Users::UserSerializer, status: :ok
       end
 
       def show
@@ -14,31 +14,23 @@ module Api
       end
 
       def update
-        if user.update(user_params)
-          render json: user, serializer: UserSerializer, status: :ok
+        if @user.update(update_params)
+          render json: @user, serializer: UserSerializer, status: :ok
         else
           render_error
         end
       end
 
       def destroy
-        if user.present?
-          user.destroy
+        if @user.present?
+          @user.destroy
         end
 
         head :no_content
       end
 
       private
-        def users
-          @users ||= User.all
-        end
-
-        def user
-          @user ||= User.find(params[:id])
-        end
-
-        def user_params
+        def update_params
           params.permit(:first_name, :last_name, :email, :password)
         end
 

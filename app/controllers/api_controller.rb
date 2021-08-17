@@ -2,6 +2,7 @@
 
 class ApiController < ApplicationController
   before_action :authorize_request
+  load_and_authorize_resource
 
   attr_accessor :current_user
 

@@ -15,12 +15,16 @@ Rails.application.routes.draw do
       resources :categories
       resources :testimonials
       resources :members
-      resources :news
+      resources :posts
       resources :activities
       resources :users
       resources :commentaries
       resources :contacts
-      resource :organization, only: [:show, :update]
+      resource :organization, only: [:show]
     end
+  end
+
+  namespace :admin do
+    resource :organization, only: [:update]
   end
 end

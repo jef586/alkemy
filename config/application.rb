@@ -23,6 +23,22 @@ module SomosMasProject
   class Application < Rails::Application
     config.load_defaults 6.1
 
+    # Global configuration on how to react to CanCan::AccesDenied
+    # :not_found would be a better http status when we doesn't want to reveal 
+    # to the user that the article exists
+    config.action_dispatch.rescue_responses.merge!('CanCan::AccessDenied' => :unauthorized)
+
+    # Configuration for the application, engines, and railties goes here.
+    #
+    # These settings can be overridden in specific environments using the files
+    # in config/environments, which are processed later.
+    #
+    # config.time_zone = "Central Time (US & Canada)"
+    # config.eager_load_paths << Rails.root.join("extras")
+
+    # Only loads a smaller set of middleware suitable for API only apps.
+    # Middleware like session, flash, cookies can be added back manually.
+    # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
     I18n.available_locales = [:en,:es]

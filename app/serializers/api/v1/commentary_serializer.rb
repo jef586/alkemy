@@ -5,7 +5,7 @@ module Api
     class CommentarySerializer < ApplicationSerializer
       attributes :id,
                  :body,
-                 :new_id
+                 :post_id
     end
   end
 end
