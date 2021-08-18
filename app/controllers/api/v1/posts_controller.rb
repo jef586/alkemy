@@ -22,6 +22,11 @@ module Api
       end
 
       def destroy
+        if @post.present?
+          @post.destroy
+        end
+
+        head :no_content
       end
 
       private
