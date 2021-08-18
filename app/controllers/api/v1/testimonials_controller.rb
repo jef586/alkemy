@@ -16,9 +16,6 @@ module Api
       end
 
       def destroy
-        if @testimonial.present?
-          @testimonial.destroy
-        end
       end
     end
   end
