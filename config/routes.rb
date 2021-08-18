@@ -15,8 +15,8 @@ Rails.application.routes.draw do
       resources :categories
       resources :testimonials
       resources :members
-      resources :posts
-      resources :activities
+      resources :posts, only: [:show]
+      resources :activities, only: [:show]
       resources :users
       resources :commentaries
       resources :contacts
@@ -26,5 +26,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resource :organization, only: [:update]
+    resources :posts, only: [:create, :destroy, :show, :update]
+    resources :activities, only: [:create, :destroy, :show, :update]
   end
 end
