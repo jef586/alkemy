@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :posts
   has_one :organization
   has_many :contacts
+  has_many :testimonials
 
   # Authentication
   has_secure_password
