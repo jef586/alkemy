@@ -6,6 +6,8 @@ module Admin
       if @testimonial.present?
         @testimonial.destroy
       end
+
+      head :no_content
     end
   end
 end
