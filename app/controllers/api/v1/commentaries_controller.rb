@@ -4,7 +4,8 @@ module Api
   module V1
     class CommentariesController < ApiController
       def index
-        render json: @commentaries
+        @commentaries = Commentary.all
+        render json: @commentaries, each_serializer: CommentarySerializer, status: :ok
       end
 
       def show
