@@ -10,14 +10,6 @@ module Api
         render json: @post, serializer: PostSerializer, status: :ok
       end
 
-      def create
-        if @post.save
-          render json: @post, serializer: PostSerializer, status: :created
-        else
-          render json: { errors: @post.errors }, status: :unprocessable_entity
-        end
-      end
-
       def update
         if @post.update(update_params)
           render json: @post, serializer: Categories::PostSerializer, status: :ok
@@ -25,6 +17,7 @@ module Api
           render json: @post.errors, status: :unprocessable_entity
         end
       end
+<<<<<<< HEAD
 
       def destroy
       end
@@ -40,6 +33,8 @@ module Api
         def update_params
           params.permit(:name, :content, :category_id)
         end
+=======
+>>>>>>> dev
     end
   end
 end
