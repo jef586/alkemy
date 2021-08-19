@@ -15,12 +15,14 @@ Rails.application.routes.draw do
       resources :categories
       resources :testimonials
       resources :members
-      resources :posts
       resources :activities
       resources :users
       resources :commentaries
       resources :contacts
       resource :organization, only: [:show]
+      resources :posts do
+        resource :post_commentaries, only: [:show]
+      end
     end
   end
 
