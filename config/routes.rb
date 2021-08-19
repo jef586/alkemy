@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       resources :posts, only: [:show]
       resources :activities
       resources :users
-      resources :commentaries
+      resources :commentaries, only: [:show]
       resources :contacts
       resource :organization, only: [:show]
     end
@@ -27,5 +27,6 @@ Rails.application.routes.draw do
     resources :testimonials, only: [:destroy]
     resource :organization, only: [:update]
     resources :posts, only: [:create, :destroy, :show]
+    resources :commentaries, only: [:index, :create, :destroy, :show]
   end
 end
