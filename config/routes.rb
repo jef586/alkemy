@@ -21,7 +21,9 @@ Rails.application.routes.draw do
       resources :contacts
       resource :organization, only: [:show]
       resources :posts do
-        resource :post_commentaries, only: [:show]
+        scope module: :posts_controllers do
+          resources :commentaries, only: [:index]
+        end
       end
     end
   end
