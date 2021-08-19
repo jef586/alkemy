@@ -1,10 +1,13 @@
 # Fake data to testing purposes
 
-# Users instances 
-
+# Roles
 administrator = Role.create(name: "administrator")
 regular = Role.create(name: "regular")
 visitor = Role.create(name: "visitor")
+
+# Users instances 
+admin = User.create(first_name: "Admin", last_name: "Admin", email: "admin@admin.com", password: "password", role: administrator)
+usuario = User.create(first_name: "User", last_name: "User", email: "user@user.com", password: "password", role: regular)
 
 10.times do
     admin = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "123456", role: administrator)
@@ -97,8 +100,6 @@ admin = User.create(first_name: "Admin", last_name: "Admin", email: "admin@admin
 end
 
 # Commentary instances
-usuario = User.create(first_name: "User", last_name: "User", email: "user@user.com", password: "password", role: regular)
-
 10.times do
   Commentary.create(body: Faker::Lorem.paragraph, user: usuario, post: Post.last)
 end
@@ -114,7 +115,6 @@ ong = Organization.create(
 )
 
 #Contacts instances
-
 contact = Contact.create(
   from_user: admin,
   name: "Jose Lopez",
@@ -133,7 +133,7 @@ new_contact = Contact.create(
 end
 
 # News instances
-admin = User.create(first_name: "Admin", last_name: "Admin", email: "admin@admin.com", password: "password", role: administrator)
+
 
 10.times do
     Post.create(name: Faker::Book.title, content: Faker::Lorem.paragraph, user: admin)
@@ -146,6 +146,11 @@ usuario = User.create(first_name: "User", last_name: "User", email: "user@user.c
     Commentary.create(body: Faker::Lorem.paragraph, user: usuario)
 end
 
+# Testimonial instances
+10.times do |i|
+  Testimonial.create(name: "Testimonio #{i}", content: "Contenido #{i}",user: admin)
+end
+
 p "#{User.count} created users"
 p "#{Role.count} created roles"
 p "#{Post.count} created posts"
@@ -153,3 +158,4 @@ p "#{Commentary.count} created comments"
 p "#{Category.count} created categories"
 p "#{Organization.count} created organization"
 p "#{Contact.count} created contacts"
+p "#{Testimonial.count} created testimonials"
