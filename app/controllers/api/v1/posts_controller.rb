@@ -20,18 +20,6 @@ module Api
 
       def update
       end
-
-      def destroy
-      end
-
-      private
-        def create_params
-          params.permit(
-            :name,
-            :content,
-            :category_id
-          ).merge(user: current_user)
-        end
     end
   end
 end
