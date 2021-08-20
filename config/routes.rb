@@ -32,6 +32,6 @@ Rails.application.routes.draw do
     resources :testimonials, only: [:destroy]
     resource :organization, only: [:update]
     resources :posts, only: [:create, :destroy, :show]
-    resources :commentaries, only: [:index, :create, :destroy, :show]
+    resources :commentaries, only: [:index]
   end
 end
