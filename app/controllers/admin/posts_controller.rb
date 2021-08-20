@@ -11,7 +11,7 @@ module Admin
 
     def update
       if @post.update(update_params)
-        render json: @post, serializer: Categories::PostSerializer, status: :ok
+        render json: @post, serializer: Admin::PostSerializer, status: :ok
       else
         render json: @post.errors, status: :unprocessable_entity
       end
@@ -41,6 +41,7 @@ module Admin
           :category_id
         ).merge(user: current_user)
       end
+
       def update_params
         params.permit(:name, :content, :category_id)
       end
