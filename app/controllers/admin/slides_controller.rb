@@ -2,9 +2,6 @@
 
 module Admin
   class SlidesController < ApiController
-    def index
-      render json: @slides, each_serializer: SlideSerializer
-    end
     def create
       if @slide.valid?
         @slide.save
