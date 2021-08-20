@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :roles
       resources :categories
-      resources :members
+      resources :members, only: [:index]
       resources :posts, only: [:show]
       resources :activities
       resources :users
@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     resources :testimonials, only: [:create, :update, :destroy]
     resource :organization, only: [:update]
     resources :posts, only: [:create, :destroy, :show]
+    resources :members, only: [:show, :update, :destroy]
     resources :slides, only: [:update]
     resources :members, only: [:show, :create, :destroy]
   end
