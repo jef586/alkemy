@@ -80,9 +80,6 @@ end
 end
 
 # Posts instances
-admin = User.create(first_name: "Admin", last_name: "Admin", email: "admin@admin.com", password: "password", role: administrator)
-
-# Posts instances
 random_categories = Category.where(id: 1..4).sample
 
 10.times do
