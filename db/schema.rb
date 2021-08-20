@@ -138,6 +138,7 @@ ActiveRecord::Schema.define(version: 2021_07_29_170547) do
   end
 
   create_table "testimonials", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "user_id"
     t.string "name", null: false
     t.text "content", null: false
     t.datetime "deleted_at"
