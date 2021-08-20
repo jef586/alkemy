@@ -93,8 +93,6 @@ end
 end
 
 # Posts instances
-admin = User.create(first_name: "Admin", last_name: "Admin", email: "admin@admin.com", password: "password", role: administrator)
-
 10.times do
   Post.create(name: Faker::Book.title, content: Faker::Lorem.paragraph, user: admin, category: Category.first)
 end

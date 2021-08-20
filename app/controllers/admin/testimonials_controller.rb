@@ -2,6 +2,14 @@
 
 module Admin
   class TestimonialsController < ApiController
+    def update
+      if @testimonial.update(update_params)
+        render json: @testimonial, serializer: Admin::TestimonialSerializer, status: :ok
+      else
+        render json: { error: @testimonial.errors }, status: :unprocessable_entity
+      end
+    end
+
     def destroy
       if @testimonial.present?
         @testimonial.destroy
@@ -9,5 +17,13 @@ module Admin
 
       head :no_content
     end
+
+    private
+      def update_params
+        params.permit(
+          :name,
+          :content
+        )
+      end
   end
 end
