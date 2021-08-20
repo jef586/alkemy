@@ -10,9 +10,9 @@ module Admin
 
     def update
       if @activity.update(update_params)
-        render json: @activity, serializer: ActivitySerializer, status: :ok
+        render json: @activity, serializer: Admin::ActivitySerializer, status: :ok
       else
-        render json: { error: "We can't update the data" }, status: :unprocessable_entity
+        render json: @activity.errors, status: :unprocessable_entity
       end
     end
 
