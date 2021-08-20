@@ -33,5 +33,6 @@ Rails.application.routes.draw do
     resource :organization, only: [:update]
     resources :posts, only: [:create, :destroy, :show]
     resources :members, only: [:show, :update, :destroy]
+    resources :slides, only: [:update]
   end
 end
