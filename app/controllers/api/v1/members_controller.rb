@@ -11,6 +11,11 @@ module Api
       end
 
       def create
+        if @member.save
+          render json: @member, serializer: MemberSerializer, status: :created
+        else
+          render json: { errors: create_params.errors }, status: :unprocessable_entity
+        end
       end
 
       def update
@@ -18,6 +23,17 @@ module Api
 
       def destroy
       end
+
+      private
+        def create_params
+          params.permit(
+            :name,
+            :facebook_url,
+            :instagram_url,
+            :linkedin_url,
+            :description
+          )
+        end
     end
   end
 end
