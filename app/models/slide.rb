@@ -8,13 +8,12 @@ class Slide < ApplicationRecord
   # Callbacks
   before_create :before_create_adjustment
   # Validations
-  ## TODO add proper image validations
   validates :text,
             presence: true
-
   validates :order,
             numericality: { only_integer: true, greater_than_or_equal_to: 1 },
             allow_nil: true
+  validates :image, presence: true, blob: { content_type: :image, size_range: 1..3.megabytes }
   # Scopes
   scope :where_order_greater_equal_than, -> (order) { where("slides.order >= ?", order) }
   # Methods
