@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2021_07_29_170547) do
     t.string "name", null: false
     t.string "phone_number", null: false
     t.text "message"
+    t.string "email", null: false
     t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -136,13 +137,19 @@ ActiveRecord::Schema.define(version: 2021_07_29_170547) do
     t.index ["organization_id"], name: "index_slides_on_organization_id"
   end
 
+<<<<<<< HEAD
   create_table "testimonials", charset: "utf8mb4", force: :cascade do |t|
+=======
+  create_table "testimonials", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id"
+>>>>>>> dev
     t.string "name", null: false
     t.text "content", null: false
     t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["deleted_at"], name: "index_testimonials_on_deleted_at"
+    t.index ["user_id"], name: "index_testimonials_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
