@@ -29,9 +29,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :testimonials, only: [:update, :destroy]
+    resources :testimonials, only: [:update, :create, :destroy]
     resource :organization, only: [:update]
     resources :posts, only: [:create, :destroy, :show]
-    resources :members, only: [:show, :destroy]
+    resources :members, only: [:show, :create, :destroy]
   end
 end
