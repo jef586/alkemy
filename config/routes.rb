@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     resources :testimonials, only: [:create, :update, :destroy]
     resource :organization, only: [:update]
     resources :posts, only: [:create, :destroy, :show]
+    resources :slides, only: [:update]
     resources :members, only: [:show, :create, :destroy]
   end
 end
