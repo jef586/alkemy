@@ -9,7 +9,7 @@ module Admin
         render json: { error: @testimonial.errors }, status: :unprocessable_entity
       end
     end
-    
+
     def create
       if @testimonial.save
         render json: @testimonial, serializer: TestimonialSerializer, status: :created
