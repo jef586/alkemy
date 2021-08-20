@@ -109,13 +109,15 @@ ong = Organization.create!(
 contact = Contact.create!(
   from_user: admin,
   name: "Jose Lopez",
-  phone_number: "115467893"
+  phone_number: "115467893",
+  email: "email1@email.com"
 )
 
 new_contact = Contact.create!(
   from_user: admin,
   name: "Lalo Landa",
-  phone_number: "1154675546"
+  phone_number: "1154675546",
+  email: "email2@email.com"
 )
 
 # Members instance
