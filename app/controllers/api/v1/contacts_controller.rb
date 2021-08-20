@@ -7,7 +7,6 @@ module Api
         render json: @contacts, each_serializer: ContactSerializer, status: :ok
       end
       def create
-        @contact.from_user = current_user
         if @contact.save
           render json: @contact, serializer: ContactSerializer, status: :created
         else
@@ -22,7 +21,7 @@ module Api
               :phone_number,
               :message,
               :name
-            )
+            ).merge(from_user: current_user)
           end
     end
   end
