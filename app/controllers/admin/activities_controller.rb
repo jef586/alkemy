@@ -17,23 +17,12 @@ module Admin
     end
 
     def create
-      if @activity.save
-        render json: @activity, serializer: ActivitySerializer, status: :created
-      else
-        render json: { errors: @activity.errors }, status: :unprocessable_entity
-      end
     end
 
     def destroy
     end
 
     private
-      def activity_params
-        params.permit(
-                  :name,
-                  :content
-                )
-      end
       def update_params
         params.permit(:name, :content)
       end

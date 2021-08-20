@@ -137,12 +137,8 @@ ActiveRecord::Schema.define(version: 2021_07_29_170547) do
     t.index ["organization_id"], name: "index_slides_on_organization_id"
   end
 
-<<<<<<< HEAD
   create_table "testimonials", charset: "utf8mb4", force: :cascade do |t|
-=======
-  create_table "testimonials", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id"
->>>>>>> dev
     t.string "name", null: false
     t.text "content", null: false
     t.datetime "deleted_at"
