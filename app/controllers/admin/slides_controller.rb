@@ -3,12 +3,8 @@
 module Admin
   class SlidesController < ApiController
     def update
-      if @slide.present?
-        if @slide.update(update_params)
-          render json: @slide, serializer: Admin::SlideSerializer, status: :ok
-        else
-          render json: { error: @slide.errors }, status: :unprocessable_entity
-        end
+      if @slide.update(update_params)
+        render json: @slide, serializer: Admin::SlideSerializer, status: :ok
       else
         render json: { error: @slide.errors }, status: :unprocessable_entity
       end
