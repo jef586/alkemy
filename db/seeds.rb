@@ -131,6 +131,11 @@ end
   Testimonial.create!(name: "Testimonio #{i}", content: "Contenido #{i}",user: admin)
 end
 
+# Slides instances
+10.times do
+  Slide.create!(text: Faker::Lorem.paragraph, organization: ong)
+end
+
 p "#{User.count} created users"
 p "#{Role.count} created roles"
 p "#{Post.count} created posts"
@@ -139,3 +144,4 @@ p "#{Category.count} created categories"
 p "#{Organization.count} created organization"
 p "#{Contact.count} created contacts"
 p "#{Testimonial.count} created testimonials"
+p "#{Slide.count} created slides"
