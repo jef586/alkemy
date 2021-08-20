@@ -1,24 +1,27 @@
 # Fake data to testing purposes
 
-# Users instances 
+# Roles
+administrator = Role.create!(name: "administrator")
+regular = Role.create!(name: "regular")
+visitor = Role.create!(name: "visitor")
 
-administrator = Role.create(name: "administrator")
-regular = Role.create(name: "regular")
-visitor = Role.create(name: "visitor")
+# Users instances 
+admin = User.create!(first_name: "Admin", last_name: "Admin", email: "admin@admin.com", password: "password", role: administrator)
+usuario = User.create!(first_name: "User", last_name: "User", email: "user@user.com", password: "password", role: regular)
 
 10.times do
-    admin = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "123456", role: administrator)
+    admin = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "123456", role: administrator)
 
-    Post.create(name: Faker::Book.title, content: Faker::Lorem.paragraph, user: admin)
+    Post.create!(name: Faker::Book.title, content: Faker::Lorem.paragraph, user: admin)
 end
 
 10.times do
-    User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "regular", role: regular)
+    User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "regular", role: regular)
 end
 
 # Activities instances
 
-apoyo_escolar_nivel_primario = Activity.create(
+apoyo_escolar_nivel_primario = Activity.create!(
   name: "Apoyo escolar para el nivel primario",
   content: "El espacio de apoyo escolar es el corazón del área educativa. Se realizan los talleres de lunes a jueves de 10 a 12 horas y de 14 a 16 horas en el 
   contraturno, Los sábados también se realiza el taller para niños y niñas que asisten a la escuela doble turno. Tenemos un espacio especial para los de 1er 
@@ -27,7 +30,7 @@ apoyo_escolar_nivel_primario = Activity.create(
   con una planificación propia que armamos en Manos para nivelar a los niños y que vayan con más herramientas a la escuela."
 )
 
-apoyo_escolar_nivel_secundario = Activity.create(
+apoyo_escolar_nivel_secundario = Activity.create!(
   name: "Apoyo escolar para el nivel secundario",
   content: "Del mismo modo que en primaria, este taller es el corazón del área secundaria. Se realizan talleres de lunes a viernes de 10 a 12 horas y de 16 a 18 
   horas en el contraturno. Actualmente se encuentran inscriptos en el taller 50 adolescentes entre 13 y 20 años. Aquí los jóvenes se presentan con el material que 
@@ -35,7 +38,7 @@ apoyo_escolar_nivel_secundario = Activity.create(
   por los jóvenes como un punto de encuentro y relación entre ellos y la institución."
 )
 
-tutorias = Activity.create(
+tutorias = Activity.create!(
   name: "Tutorías",
   content: "Es un programa destinado a jóvenes a partir del tercer año de secundaria, cuyo objetivo es garantizar su permanencia en la escuela y construir un 
   proyecto de vida que da sentido al colegio. El objetivo de esta propuesta es lograr la integración escolar de niños y jóvenes del barrio promoviendo el soporte 
@@ -51,27 +54,14 @@ tutorias = Activity.create(
   - Beca estímulo (los jóvenes reciben una beca estímulo que es supervisada por los tutores). Actualmente se encuentran inscriptos en el programa 30 adolescentes."
 )   
 
-taller_arte_y_cuentos = Activity.create(
+taller_arte_y_cuentos = Activity.create!(
   name: "Taller de arte y cuentos",
   content: "Taller literario y de manualidades que se realiza semanalmente."
 )    
 
-paseos_recreativos_y_educativos = Activity.create(
+paseos_recreativos_y_educativos = Activity.create!(
   name: "Paseos recreativos y educativos",
   content: "Estos paseos están pensados para promover la participación y sentido de pertenencia de los niños, niñas y adolescentes al área educativa."
-)
-
-#commentaries instances
-first_commentary = Commentary.create(
-  body: "Hola! este es mi primer comentario"
-)
-
-seccond_commentary = Commentary.create(
-  body: "El proyecto de ayuda escolar es muy interesante"
-)
-
-new_commentary = Commentary.create(
-  body: "Gracias por el trabajo que estan haciendo para la comunidad"
 )
 
 # Categories Instances
@@ -92,19 +82,24 @@ end
 # Posts instances
 admin = User.create(first_name: "Admin", last_name: "Admin", email: "admin@admin.com", password: "password", role: administrator)
 
+# Posts instances
+random_categories = Category.where(id: 1..4).sample
+
 10.times do
-  Post.create(name: Faker::Book.title, content: Faker::Lorem.paragraph, user: admin, category: Category.first)
+  Post.create!(name: Faker::Book.title, content: Faker::Lorem.paragraph, user: admin, category: random_categories)
+end
+
+def random_post
+  Post.where(id: 1..10).sample
 end
 
 # Commentary instances
-usuario = User.create(first_name: "User", last_name: "User", email: "user@user.com", password: "password", role: regular)
-
 10.times do
-  Commentary.create(body: Faker::Lorem.paragraph, user: usuario, post: Post.last)
+  Commentary.create!(body: Faker::Lorem.paragraph, user: usuario, post: random_post)
 end
 
 # Organization
-ong = Organization.create(
+ong = Organization.create!(
   user: admin,
   name: "Somos Más",
   welcome_text: Faker::Lorem.paragraph,
@@ -114,15 +109,14 @@ ong = Organization.create(
 )
 
 #Contacts instances
-
-contact = Contact.create(
+contact = Contact.create!(
   from_user: admin,
   name: "Jose Lopez",
   phone_number: "115467893",
   email: "email1@email.com"
 )
 
-new_contact = Contact.create(
+new_contact = Contact.create!(
   from_user: admin,
   name: "Lalo Landa",
   phone_number: "1154675546",
@@ -131,21 +125,12 @@ new_contact = Contact.create(
 
 # Members instance
 10.times do
-    Member.create(name: Faker::Name.name, facebook_url: Faker::Internet.url(host: "facebook.com"), instagram_url: Faker::Internet.url(host: "instagram.com"), linkedin_url: Faker::Internet.url(host: "linkedin.com"), description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+    Member.create!(name: Faker::Name.name, facebook_url: Faker::Internet.url(host: "facebook.com"), instagram_url: Faker::Internet.url(host: "instagram.com"), linkedin_url: Faker::Internet.url(host: "linkedin.com"), description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
 end
 
-# News instances
-admin = User.create(first_name: "Admin", last_name: "Admin", email: "admin@admin.com", password: "password", role: administrator)
-
-10.times do
-    Post.create(name: Faker::Book.title, content: Faker::Lorem.paragraph, user: admin)
-end
-
-# Commentary instances
-usuario = User.create(first_name: "User", last_name: "User", email: "user@user.com", password: "password", role: regular)
-
-10.times do
-    Commentary.create(body: Faker::Lorem.paragraph, user: usuario)
+# Testimonial instances
+10.times do |i|
+  Testimonial.create!(name: "Testimonio #{i}", content: "Contenido #{i}",user: admin)
 end
 
 p "#{User.count} created users"
@@ -155,3 +140,5 @@ p "#{Commentary.count} created comments"
 p "#{Category.count} created categories"
 p "#{Organization.count} created organization"
 p "#{Contact.count} created contacts"
+p "#{Testimonial.count} created testimonials"
+p "#{Member.count} created members"

@@ -13,18 +13,25 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :roles
       resources :categories
-      resources :testimonials
       resources :members
-      resources :posts
+      resources :posts, only: [:show]
       resources :activities
       resources :users
       resources :commentaries
       resources :contacts
       resource :organization, only: [:show]
+      resources :posts do
+        scope module: :posts_controllers do
+          resources :commentaries, only: [:index]
+        end
+      end
     end
   end
 
   namespace :admin do
+    resources :testimonials, only: [:destroy]
     resource :organization, only: [:update]
+    resources :posts, only: [:create, :destroy, :show]
+    resources :members, only: [:show, :destroy]
   end
 end
