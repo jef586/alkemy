@@ -33,5 +33,6 @@ Rails.application.routes.draw do
     resource :organization, only: [:update]
     resources :posts, only: [:create, :destroy, :show]
     resources :members, only: [:show, :destroy]
+    resources :users, only: [:index]
   end
 end
