@@ -37,7 +37,7 @@ module Admin
           :instagram_url,
           :linkedin_url,
           :description
-          )
+        )
       end
   end
 end
