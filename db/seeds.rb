@@ -131,8 +131,16 @@ end
 end
 
 # Slide instances
-5.times do |i|
-  Slide.create(text: "text#{i}",organization:ong,order: rand(1..i+1))
+IMAGE_PATHS = ['app/assets/images/team_member_pictures/Cecilia Mendez.jpeg',
+               'app/assets/images/team_member_pictures/Marco Fernandez.jpg',
+               'app/assets/images/team_member_pictures/María Garcia.jpg',
+               'app/assets/images/team_member_pictures/María Irola.jpg',
+               'app/assets/images/team_member_pictures/Marita Gomez.jpeg']
+
+IMAGE_PATHS.each do |image_path|
+  slide = Slide.new(text: "text", organization:ong, order: rand(1..5))
+  slide.image.attach(io: File.open(image_path),filename: image_path.match(/(?<=pictures\/).*$/).to_s)
+  slide.save!
 end
 
 p "#{User.count} created users"
