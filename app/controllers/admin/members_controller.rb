@@ -12,6 +12,11 @@ module Admin
     end
 
     def update
+      if @member.update(member_params)
+        render json: @member, serializer: MemberSerializer, status: :ok
+      else
+        render json: @member.errors, status: :unprocessable_entity
+      end
     end
 
     def destroy
@@ -23,5 +28,16 @@ module Admin
 
       head :no_content
     end
+
+    private
+      def member_params
+        params.permit(
+          :name,
+          :facebook_url,
+          :instagram_url,
+          :linkedin_url,
+          :description
+        )
+      end
   end
 end
