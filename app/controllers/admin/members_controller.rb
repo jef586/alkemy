@@ -9,6 +9,11 @@ module Admin
     end
 
     def create
+      if @member.save
+        render json: @member, serializer: MemberSerializer, status: :created
+      else
+        render json: { errors: @member.errors }, status: :unprocessable_entity
+      end
     end
 
     def update
