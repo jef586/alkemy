@@ -12,7 +12,7 @@ module Admin
       if @member.save
         render json: @member, serializer: MemberSerializer, status: :created
       else
-        render json: { errors: create_params.errors }, status: :unprocessable_entity
+        render json: { errors: @member.errors }, status: :unprocessable_entity
       end
     end
 
@@ -30,14 +30,14 @@ module Admin
     end
 
     private
-        def create_params
-          params.permit(
-            :name,
-            :facebook_url,
-            :instagram_url,
-            :linkedin_url,
-            :description
-          )
-        end
+      def create_params
+        params.permit(
+          :name,
+          :facebook_url,
+          :instagram_url,
+          :linkedin_url,
+          :description
+        )
+      end
   end
 end

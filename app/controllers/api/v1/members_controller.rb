@@ -18,7 +18,6 @@ module Api
 
       def destroy
       end
-
     end
   end
 end
