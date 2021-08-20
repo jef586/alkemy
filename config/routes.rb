@@ -20,6 +20,11 @@ Rails.application.routes.draw do
       resources :commentaries
       resources :contacts
       resource :organization, only: [:show]
+      resources :posts do
+        scope module: :posts_controllers do
+          resources :commentaries, only: [:index]
+        end
+      end
     end
   end
 
