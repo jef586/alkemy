@@ -9,5 +9,6 @@ class Contact < ApplicationRecord
   # Validations
   validates :name,
             :phone_number,
+            :email,
             presence: true
 end
