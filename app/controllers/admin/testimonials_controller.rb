@@ -14,7 +14,7 @@ module Admin
       if @testimonial.save
         render json: @testimonial, serializer: TestimonialSerializer, status: :created
       else
-        render json: { errors: create_params.errors }, status: :unprocessable_entity
+        render json: { errors: @testimonial.errors }, status: :unprocessable_entity
       end
     end
 
@@ -32,6 +32,14 @@ module Admin
           :name,
           :content
         )
+      end
+
+
+      def create_params
+        params.permit(
+          :name,
+          :content
+        ).merge(user: current_user)
       end
   end
 end
