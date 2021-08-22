@@ -27,10 +27,10 @@ module Admin
           :organization_id
         )
       end
-        def update_params
-          params.permit(
-              :text
-            )
-        end
+      def update_params
+        params.permit(
+            :text
+          )
+      end
   end
 end
