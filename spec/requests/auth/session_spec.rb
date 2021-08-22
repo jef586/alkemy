@@ -64,6 +64,6 @@ describe "POST /auth/login", type: :request do
     it "wrong password returns unauthorized message" do
       post endpoint, params: correct_params.merge!({ password: "456213" })
       expect(body_json["error"]).to eq("unauthorized")
-    end  
+    end
   end
 end
