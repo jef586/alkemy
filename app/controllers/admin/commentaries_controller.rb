@@ -2,10 +2,8 @@
 
 module Admin
   class CommentariesController < ApiController
-    before_action :fetch_commentaries
     def index
-      @commentaries = Commentary.all
-      render json: @commentaries, each_serializer: CommentarySerializer, status: :ok
+      render json: set_commentaries, each_serializer: CommentarySerializer, status: :ok
     end
 
     def show
@@ -21,14 +19,17 @@ module Admin
     end
 
     private
+      def set_commentaries
+        fetch_commentaries
+      end
+
       def fetch_commentaries
-        comment = comment.for_creation_date(date_of_creation) if date_of_creation
-        comment = comment.for_body(body) if body
-        comment
+        comments = @commentaries
+        comments = comments.order("created_at DESC")
+        comments = comments.by_body_content(body) if body
+        comments
       end
-      def date_of_creation
-        params[:date_of_creation]
-      end
+
       def body
         params[:body]
       end

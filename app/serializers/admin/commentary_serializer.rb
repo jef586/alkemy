@@ -3,7 +3,6 @@
 module Admin
   class CommentarySerializer < ApplicationSerializer
     attributes :id,
-               :body,
-               :post_id
+               :body
   end
 end

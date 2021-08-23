@@ -6,7 +6,7 @@ class Commentary < ApplicationRecord
 
   # Validations
   validates :body, presence: true
-  # scopes
-  scope :for_creation_date, -> (date_of_creation) { where date_of_creation: date_of_creation }
-  scope :for_body, -> (body) { where body: body }
+
+  # Scopes
+  scope :by_body_content, -> (query) { where("body LIKE ?", "%#{query}%") }
 end
