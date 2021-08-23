@@ -23,9 +23,8 @@ module Admin
         params.permit(
           :text,
           :image,
-          :order,
-          :organization_id
-        )
+          :order
+        ).merge(organization: Organization.find_by(name: "Somos Más"))
       end
       def update_params
         params.permit(
