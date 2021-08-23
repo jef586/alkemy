@@ -9,9 +9,6 @@ module Api
       def show
         render json: @post, serializer: PostSerializer, status: :ok
       end
-
-      def update
-      end
     end
   end
 end

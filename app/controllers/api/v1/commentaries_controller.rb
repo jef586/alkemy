@@ -14,7 +14,7 @@ module Api
         if @commentary.update(update_params)
           render json: @commentary, serializer: CommentarySerializer, status: :ok
         else
-          render json: { error: "We can't update the data" }, status: :unprocessable_entity
+          render json: { error: @commentary.errors }, status: :unprocessable_entity
         end
       end
 
