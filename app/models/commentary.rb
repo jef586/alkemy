@@ -6,4 +6,7 @@ class Commentary < ApplicationRecord
 
   # Validations
   validates :body, presence: true
+
+  # Scopes
+  scope :by_body_content, -> (query) { where("body LIKE ?", "%#{query}%") }
 end
