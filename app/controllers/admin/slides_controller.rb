@@ -20,21 +20,30 @@ module Admin
         render json: { error: @slide.errors }, status: :unprocessable_entity
       end
     end
+    def destroy
+      if @slide.present?
+        @slide.destroy
+      else
+        render json: { error: @slide.errors }, status: :unprocessable_entity
+      end
 
-    private
-      def create_params
-        params.permit(
-          :text,
-          :image,
-          :order
-        ).merge(organization: Organization.find_by(name: "Somos Más"))
-      end
-      def update_params
-        params.permit(
-            :text,
-            :image,
-            :order
-          )
-      end
+      head :no_content
+   end
+
+   private
+     def create_params
+       params.permit(
+         :text,
+         :image,
+         :order
+       ).merge(organization: Organization.find_by(name: "Somos Más"))
+     end
+     def update_params
+       params.permit(
+           :text,
+           :image,
+           :order
+         )
+     end
   end
 end
