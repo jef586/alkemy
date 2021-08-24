@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(version: 2021_07_29_170547) do
     t.integer "order"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["order"], name: "index_slides_on_order", unique: true
     t.index ["organization_id"], name: "index_slides_on_organization_id"
   end
 
