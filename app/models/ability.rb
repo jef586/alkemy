@@ -12,7 +12,6 @@ class Ability
       can [:read, :create], Contact, from_user: user
     else
       can :read, Commentary, published: true
-      # can [:create], Session, user: user
     end
   end
 end
