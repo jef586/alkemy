@@ -1,10 +1,9 @@
+# frozen_string_literal: true
+
 module RequestHelpers
   module SignInHelper
-
     def sign_in(user)
-      token = JsonWebToken.encode(user_id: user.id)
+      JsonWebToken.encode(user_id: user.id)
     end
-
-
   end
 end
