@@ -3,15 +3,18 @@
 module Admin
   class SlidesController < ApiController
     def create
-      if @slide.valid?
-        @slide.save
+      if @slide.save
         render json: @slide, serializer: SlideSerializer, status: :created
       else
         render json: { error: @slide.errors }, status: :unprocessable_entity
       end
     end
     def update
-      if @slide.update(update_params)
+      @slide.assign_attributes(update_params)
+      if @slide.valid?
+        @slide.image.purge if params[:image]
+        @slide.assign_attributes(update_params)
+        @slide.save
         render json: @slide, serializer: Admin::SlideSerializer, status: :ok
       else
         render json: { error: @slide.errors }, status: :unprocessable_entity
@@ -28,7 +31,9 @@ module Admin
       end
       def update_params
         params.permit(
-            :text
+            :text,
+            :image,
+            :order
           )
       end
   end
