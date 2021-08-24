@@ -2,7 +2,7 @@
 
 module Admin
   class SlideSerializer < ApplicationSerializer
-    attributes :id, 
+    attributes :id,
                :text,
                :order,
                :image_url
