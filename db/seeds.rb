@@ -130,9 +130,18 @@ end
   Testimonial.create!(name: "Testimonio #{i}", content: "Contenido #{i}",user: admin)
 end
 
-# Slides instances
-10.times do
-  Slide.create!(text: Faker::Lorem.paragraph, organization: ong)
+# Slide instances
+photo_count = 10
+
+photo_count.times do |i|
+  slide = Slide.new(
+    text: "text", 
+    organization: ong,
+    order: i+1
+  )
+
+  slide.image.attach(io: File.open("spec/dummy/slides/Foto_#{i+1}.jpg"), filename: "Slide#{i}-#{DateTime.current}.jpg")
+  slide.save!
 end
 
 p "#{User.count} created users"
