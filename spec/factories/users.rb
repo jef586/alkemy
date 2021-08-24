@@ -6,5 +6,6 @@ FactoryBot.define do
     last_name { "Doe" }
     email { FFaker::Internet.email }
     password { "password" }
+    role
   end
 end
