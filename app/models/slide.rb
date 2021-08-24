@@ -15,6 +15,6 @@ class Slide < ApplicationRecord
             numericality: { only_integer: true, greater_than_or_equal_to: 1 },
             allow_nil: true,
             uniqueness: true
-    
+
   validates :image, presence: true, blob: { content_type: :image, size_range: 1..3.megabytes }
 end
