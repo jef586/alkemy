@@ -2,6 +2,10 @@
 
 module Admin
   class SlidesController < ApiController
+    def show
+      render json: @slide, serializer: SlideSerializer
+    end
+
     def create
       if @slide.save
         render json: @slide, serializer: SlideSerializer, status: :created
