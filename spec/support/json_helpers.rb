@@ -12,4 +12,8 @@ module JsonHelpers
   def meta
     body_json["meta"]
   end
+
+  def errors
+    body_json["errors"]
+  end
 end

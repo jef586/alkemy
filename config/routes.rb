@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       resources :posts, only: [:show]
       resources :activities, only: [:show]
       resources :users
-      resources :commentaries
+      resources :commentaries, only: [:show]
       resources :contacts
       resource :organization, only: [:show]
       resources :posts do
@@ -36,5 +36,6 @@ Rails.application.routes.draw do
     resources :activities, only: [:update]
     resources :slides, only: [:update]
     resources :members, only: [:show, :update, :destroy, :create]
+    resources :commentaries, only: [:index]
   end
 end

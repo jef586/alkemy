@@ -11,7 +11,7 @@ module Auth
 
         render json: user, serializer: Auth::UserSerializer, token: token, expires_at: time, status: :created
       else
-        render json: { message: "Error" }, status: :unprocessable_entity
+        render json: { errors: user.errors }, status: :unprocessable_entity
       end
     end
 
