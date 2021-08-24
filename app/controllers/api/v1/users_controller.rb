@@ -14,7 +14,7 @@ module Api
 
       def update
         if @user.update(update_params)
-          render json: @user, serializer: UserSerializer, status: :ok
+          render json: @user, serializer: Users::UserSerializer, status: :ok
         else
           render_error
         end
