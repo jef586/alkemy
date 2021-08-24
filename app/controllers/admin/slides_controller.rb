@@ -10,6 +10,16 @@ module Admin
       end
     end
 
+    def destroy
+      if @slide.present?
+        @slide.destroy
+      else
+        render json: { error: @slide.errors }, status: :unprocessable_entity
+      end
+
+      head :no_content
+   end
+
       private
         def update_params
           params.permit(
