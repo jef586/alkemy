@@ -9,17 +9,21 @@ module Admin
         render json: { error: @slide.errors }, status: :unprocessable_entity
       end
     end
+
     def update
       @slide.assign_attributes(update_params)
+
       if @slide.valid?
         @slide.image.purge if params[:image]
         @slide.assign_attributes(update_params)
         @slide.save
+
         render json: @slide, serializer: Admin::SlideSerializer, status: :ok
       else
         render json: { error: @slide.errors }, status: :unprocessable_entity
       end
     end
+
     def destroy
       if @slide.present?
         @slide.destroy
@@ -36,8 +40,9 @@ module Admin
          :text,
          :image,
          :order
-       ).merge(organization: Organization.find_by(name: "Somos Más"))
+       ).merge(organization: Organization.first)
      end
+
      def update_params
        params.permit(
            :text,

@@ -131,12 +131,16 @@ end
 end
 
 # Slide instances
-IMAGE_PATHS = ["spec/dummy/Foto 1.jpg","spec/dummy/Foto 2.jpg","spec/dummy/Foto 3.jpg","spec/dummy/Foto 4.jpg","spec/dummy/Foto 5.jpg","spec/dummy/Foto 6.jpg",
-               "spec/dummy/Foto 6(1).jpg","spec/dummy/Foto 10.jpg","spec/dummy/Foto 11.jpg","spec/dummy/Manos 10.jpg"]
+photo_count = 10
 
-IMAGE_PATHS.each_with_index do |image_path,i|
-  slide = Slide.new(text: "text", organization:ong, order: i+1)
-  slide.image.attach(io: File.open(image_path),filename: image_path.match(/(?<=pictures\/).*$/).to_s)
+photo_count.times do |i|
+  slide = Slide.new(
+    text: "text", 
+    organization: ong,
+    order: i+1
+  )
+
+  slide.image.attach(io: File.open("spec/dummy/slides/Foto_#{i+1}.jpg"), filename: "Slide#{i}-#{DateTime.current}.jpg")
   slide.save!
 end
 
