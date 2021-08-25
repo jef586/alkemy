@@ -8,6 +8,7 @@ module Api
       end
       def create
         if @contact.save
+          UserNotifierMailer.send_successful_contact_email(@contact).deliver
           render json: @contact, serializer: ContactSerializer, status: :created
         else
           render json: { errors: @contact.errors }, status: :unprocessable_entity
