@@ -102,7 +102,10 @@ ong = Organization.create!(
   welcome_text: Faker::Lorem.paragraph,
   address: "Lujan 345",
   email: "somosfundacionmas@gmail.com",
-  phone: "1160112988"
+  phone: "1160112988",
+  facebook_url: "https://www.facebook.com/somos_mas/",
+  linkedin_url: "https://www.linkedin.com/in/somosmas/",
+  instagram_url: "https://www.instagram.com/somosmas/"
 )
 
 #Contacts instances

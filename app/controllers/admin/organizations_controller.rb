@@ -24,7 +24,10 @@ module Admin
                       :phone,
                       :email,
                       :welcome_text,
-                      :about_us_text
+                      :about_us_text,
+                      :facebook_url,
+                      :linkedin_url,
+                      :instagram_url
                      )
       end
   end
