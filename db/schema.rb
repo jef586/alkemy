@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_29_170547) do
+ActiveRecord::Schema.define(version: 2021_08_25_195804) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -104,6 +104,9 @@ ActiveRecord::Schema.define(version: 2021_07_29_170547) do
     t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "facebook_url"
+    t.string "linkedin_url"
+    t.string "instagram_url"
     t.index ["deleted_at"], name: "index_organizations_on_deleted_at"
     t.index ["user_id"], name: "index_organizations_on_user_id"
   end
@@ -134,6 +137,7 @@ ActiveRecord::Schema.define(version: 2021_07_29_170547) do
     t.integer "order"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["order"], name: "index_slides_on_order", unique: true
     t.index ["organization_id"], name: "index_slides_on_organization_id"
   end
 

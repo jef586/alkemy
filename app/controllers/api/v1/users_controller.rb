@@ -4,7 +4,6 @@ module Api
   module V1
     class UsersController < ApiController
       def index
-        render json: @users, each_serializer: Users::UserSerializer, status: :ok
       end
 
       def show
@@ -15,7 +14,7 @@ module Api
 
       def update
         if @user.update(update_params)
-          render json: @user, serializer: UserSerializer, status: :ok
+          render json: @user, serializer: Users::UserSerializer, status: :ok
         else
           render_error
         end
