@@ -8,6 +8,7 @@ module Auth
       if user.save
         token = JsonWebToken.encode(user_id: user.id)
         time = Time.now + 24.hours.to_i
+        UserNotifierMailer.send_signup_email(user).deliver
 
         render json: user, serializer: Auth::UserSerializer, token: token, expires_at: time, status: :created
       else
