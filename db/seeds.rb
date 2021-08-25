@@ -138,7 +138,7 @@ photo_count = 10
 
 photo_count.times do |i|
   slide = Slide.new(
-    text: "text", 
+    text: Faker::Lorem.paragraph, 
     organization: ong,
     order: i+1
   )
