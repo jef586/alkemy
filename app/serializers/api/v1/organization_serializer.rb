@@ -11,7 +11,6 @@ module Api
                  :facebook_url,
                  :linkedin_url,
                  :instagram_url
-
     end
   end
 end
