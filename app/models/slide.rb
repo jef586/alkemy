@@ -19,5 +19,6 @@ class Slide < ApplicationRecord
   validates :image, presence: true, blob: { content_type: :image, size_range: 1..3.megabytes }
 
   # Scopes
-  scope :order_by_order, -> { order(order: :asc) }
+  scope :by_order, -> { order(order: :asc) }
+  scope :by_text, -> (query) { where("text LIKE ?", "%#{query}%") }
 end

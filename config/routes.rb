@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   mount Rswag::Ui::Engine => '/api/docs'
   mount Rswag::Api::Engine => '/api/docs'
+
   root "home#show"
 
   namespace :auth do
@@ -32,7 +33,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :testimonials, only: [:create, :update, :destroy]
     resource :organization, only: [:update]
-    resources :slides, only: [:create, :update, :destroy, :show]
+    resources :slides, only: [:index, :create, :update, :destroy, :show]
     resources :users, only: [:index]
     resources :posts, only: [:create, :destroy, :show, :update]
     resources :activities, only: [:update]
