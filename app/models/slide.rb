@@ -17,4 +17,7 @@ class Slide < ApplicationRecord
             uniqueness: true
 
   validates :image, presence: true, blob: { content_type: :image, size_range: 1..3.megabytes }
+
+  # Scopes
+  scope :order_by_order, -> { order(order: :asc) }
 end
