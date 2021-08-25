@@ -3,7 +3,7 @@
 module Admin
   class SlidesController < ApiController
     def index
-      
+      render json: set_slides, each_serializer: Admin::SlideSerializer, status: :ok
     end
 
     def show
@@ -37,9 +37,9 @@ module Admin
         @slide.destroy
       end
 
-        head :no_content
+      head :no_content
     end
-     
+
    private
      def create_params
        params.permit(
@@ -55,6 +55,21 @@ module Admin
            :image,
            :order
          )
+     end
+
+     def set_slides
+       fetch_slides
+     end
+
+     def fetch_slides
+       slides = @slides
+       slides = slides.by_order
+       slides = slides.by_text(text) if text
+       slides
+     end
+
+     def text
+       params[:text]
      end
   end
 end
