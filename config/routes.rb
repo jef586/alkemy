@@ -25,6 +25,7 @@ Rails.application.routes.draw do
           resources :commentaries, only: [:index]
         end
       end
+      resources :slides, only: [:index]
     end
   end
 
