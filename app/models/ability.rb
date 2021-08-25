@@ -10,6 +10,7 @@ class Ability
       can [:create, :update, :destroy], Commentary, user: user
       can [:read], Commentary
       can [:read, :create], Contact, from_user: user
+      can [:read], Slide
     else
       can :read, Commentary, published: true
     end
