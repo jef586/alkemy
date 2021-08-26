@@ -2,11 +2,11 @@
 
 require "rails_helper"
 
-RSpec.describe "ADMIN GET USERS", type: :request do
+describe "GET /admin/users", type: :request do
   let!(:user) { create(:user) }
   let!(:users) { create_list(:user, 10) }
 
-  describe "GET /users" do
+  context "when return all users" do
     before { get "/admin/users", headers: { "Authorization": sign_in(user) } }
 
     it "returns users" do
@@ -18,15 +18,17 @@ RSpec.describe "ADMIN GET USERS", type: :request do
       expect(response).to have_http_status(200)
     end
 
-    context "user is not admin" do
+    context "when user is not admin" do
       let(:regular_user) { create(:user, role_id: !1) }
       before { get "/admin/users", headers: { "Authorization": sign_in(regular_user) } }
+
       it "returns status code 403" do
         expect(response).to have_http_status(403)
       end
+
       it "returns a you shouldnt be here message" do
-      expect(response.body).to include("Ups.. you shouldn't be here")
-    end
+        expect(response.body).to include("Ups.. you shouldn't be here")
+      end
     end
   end
 end
