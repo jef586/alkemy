@@ -2,7 +2,6 @@
 
 module Admin
   class ActivitiesController < ApiController
-
     def create
       if @activity.save
         render json: @activity, serializer: ActivitySerializer, status: :created
@@ -26,7 +25,7 @@ module Admin
       end
 
       def create_params
-        params.permit(:name,:content)
+        params.permit(:name, :content)
       end
   end
 end

@@ -2,7 +2,7 @@
 
 module Api
   module V1
-    class ActivitiesController < ApiController      
+    class ActivitiesController < ApiController
       def show
       end
     end
