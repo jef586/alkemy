@@ -15,13 +15,12 @@ Rails.application.routes.draw do
       resources :roles
       resources :categories
       resources :members, only: [:index]
-      resources :posts, only: [:show]
       resources :activities, only: [:show]
       resources :users
       resources :commentaries, only: [:show]
       resources :contacts
       resource :organization, only: [:show]
-      resources :posts do
+      resources :posts, only: [:show] do
         scope module: :posts_controllers do
           resources :commentaries, only: [:index]
         end
