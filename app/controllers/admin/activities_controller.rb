@@ -2,10 +2,13 @@
 
 module Admin
   class ActivitiesController < ApiController
-    def index
-    end
 
-    def show
+    def create
+      if @activity.save
+        render json: @activity, serializer: ActivitySerializer, status: :created
+      else
+        render json: { errors: @activity.errors }, status: :unprocessable_entity
+      end
     end
 
     def update
@@ -16,15 +19,14 @@ module Admin
       end
     end
 
-    def create
-    end
-
-    def destroy
-    end
 
     private
       def update_params
         params.permit(:name, :content)
+      end
+
+      def create_params
+        params.permit(:name,:content)
       end
   end
 end
