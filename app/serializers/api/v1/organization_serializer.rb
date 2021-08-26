@@ -7,7 +7,10 @@ module Api
                  :name,
                  :phone,
                  :address,
-                 :email
+                 :email,
+                 :facebook_url,
+                 :linkedin_url,
+                 :instagram_url
     end
   end
 end

@@ -102,7 +102,10 @@ ong = Organization.create!(
   welcome_text: Faker::Lorem.paragraph,
   address: "Lujan 345",
   email: "somosfundacionmas@gmail.com",
-  phone: "1160112988"
+  phone: "1160112988",
+  facebook_url: "https://www.facebook.com/somos_mas/",
+  linkedin_url: "https://www.linkedin.com/in/somosmas/",
+  instagram_url: "https://www.instagram.com/somosmas/"
 )
 
 #Contacts instances
@@ -130,9 +133,18 @@ end
   Testimonial.create!(name: "Testimonio #{i}", content: "Contenido #{i}",user: admin)
 end
 
-# Slides instances
-10.times do
-  Slide.create!(text: Faker::Lorem.paragraph, organization: ong)
+# Slide instances
+photo_count = 10
+
+photo_count.times do |i|
+  slide = Slide.new(
+    text: Faker::Lorem.paragraph, 
+    organization: ong,
+    order: i+1
+  )
+
+  slide.image.attach(io: File.open("spec/dummy/slides/Foto_#{i+1}.jpg"), filename: "Slide#{i}-#{DateTime.current}.jpg")
+  slide.save!
 end
 
 p "#{User.count} created users"
