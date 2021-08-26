@@ -40,14 +40,6 @@ describe "POST /admin/activities", type: :request do
         expect(body_json).to include("errors")
       end
     end
-
-    # context "but the request is invalid" do
-    #   before { put admin_activity_path(activity), params: "asdasd" }
-
-    #   it "returns a status 400" do
-    #     expect(response).to have_http_status(400)
-    #   end
-    # end
   end
 
   context "when user is a regular" do
