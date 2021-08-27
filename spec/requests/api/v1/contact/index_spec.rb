@@ -25,5 +25,9 @@ describe "GET /api/v1/contacts", type: :request do
     it "returns status 401" do
       expect(response).to have_http_status(401)
     end
+
+    it "returns error message: 'Nil JSON web token'" do
+      expect(body_json["errors"]).to eq("Nil JSON web token")
+    end
   end
 end
