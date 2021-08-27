@@ -27,8 +27,6 @@ module Admin
     def destroy
       if @member.present?
         @member.destroy
-      else
-        render json: { error: @member.errors }, status: :unprocessable_entity
       end
 
       head :no_content
