@@ -38,7 +38,7 @@ module ExceptionHandler
       end
 
       def render_range_error
-        render json: { not_found: 'No se encontraron resultados' }, status: :not_found
+        render json: { not_found: "No se encontraron resultados" }, status: :not_found
       end
   end
 end
