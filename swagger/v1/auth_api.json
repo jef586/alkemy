@@ -1,15 +1,16 @@
 {
-  "openapi": "3.0.1",
+  "openapi": "3.0.3",
   "info": {
-    "title": "API V1",
-    "version": "v1"
+    "title": "Somos Más API",
+    "version": "V1",
+    "description": "API V1 Documentation"
   },
   "paths": {
     "/auth/register": {
       "post": {
         "summary": "Create register",
         "tags": [
-          "Users"
+          "Authentication"
         ],
         "parameters": [
 
@@ -57,7 +58,7 @@
       "post": {
         "summary": "login a user",
         "tags": [
-          "Users"
+          "Authentication"
         ],
         "parameters": [
 
@@ -94,14 +95,19 @@
       }
     }
   },
-  "servers": [
-    {
-      "url": "https://{defaultHost}",
-      "variables": {
-        "defaultHost": {
-          "default": "www.example.com"
-        }
+  "host": "localhost:3000",
+  "components": {
+    "securitySchemes": {
+      "api_key": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
       }
+    },
+    "security": {
+      "api_key": [
+
+      ]
     }
-  ]
+  }
 }

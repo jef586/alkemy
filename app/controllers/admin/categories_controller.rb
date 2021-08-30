@@ -8,12 +8,12 @@ module Admin
     end
 
     def show
-      render json: @category, serializer: Categories::CategorySerializer, status: :ok
+      render json: @category, serializer: Admin::CategorySerializer, status: :ok
     end
 
     def update
       if @category.update(update_params)
-        render json: @category, serializer: Categories::CategorySerializer, status: :ok
+        render json: @category, serializer: Admin::CategorySerializer, status: :ok
       else
         render json: @category.errors, status: :unprocessable_entity
       end
@@ -21,7 +21,7 @@ module Admin
 
     def create
       if @category.save
-        render json: @category, serializer: Categories::CategorySerializer, status: :created
+        render json: @category, serializer: Admin::CategorySerializer, status: :created
       else
         render json: @category.errors, status: :unprocessable_entity
       end

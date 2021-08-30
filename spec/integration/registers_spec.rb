@@ -3,10 +3,10 @@
 # spec/integration/blogs_spec.rb
 require "swagger_helper"
 
-describe "auth/registers" do
-  path "/auth/register" do
+describe "Auth API" do
+  path "/auth/register", swagger_doc: "v1/auth_api.json" do
     post "Create register" do
-      tags "Users"
+      tags "Authentication"
       consumes "application/json"
       parameter name: :blog, in: :body, schema: {
         type: :object,
