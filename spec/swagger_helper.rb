@@ -28,7 +28,7 @@ RSpec.configure do |config|
         securitySchemes: {
           api_key: {
             type: :apiKey,
-            name: 'Authorization',
+            name: "Authorization",
             in: :header
           }
         },
@@ -50,7 +50,7 @@ RSpec.configure do |config|
         securitySchemes: {
           api_key: {
             type: :apiKey,
-            name: 'Authorization',
+            name: "Authorization",
             in: :header
           }
         },
@@ -72,7 +72,7 @@ RSpec.configure do |config|
         securitySchemes: {
           api_key: {
             type: :apiKey,
-            name: 'Authorization',
+            name: "Authorization",
             in: :header
           }
         },
