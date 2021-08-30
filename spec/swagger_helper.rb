@@ -6,7 +6,7 @@ RSpec.configure do |config|
   # Specify a root folder where Swagger JSON files are generated
   # NOTE: If you're using the rswag-api to serve API descriptions, you'll need
   # to ensure that it's configured to serve Swagger from the same folder
-  config.swagger_root = Rails.root.join("swagger").to_s
+  config.swagger_root = Rails.root.to_s + "/swagger"
 
   # Define one or more Swagger documents and provide global metadata for each one
   # When you run the 'rswag:specs:swaggerize' rake task, the complete Swagger will
@@ -15,23 +15,35 @@ RSpec.configure do |config|
   # document below. You can override this behavior by adding a swagger_doc tag to the
   # the root example_group in your specs, e.g. describe '...', swagger_doc: 'v2/swagger.json'
   config.swagger_docs = {
-    "v1/swagger.json" => {
-      openapi: "3.0.1",
+    "v1/admin_api.json" => {
+      openapi: "3.0.3",
       info: {
-        title: "API V1",
-        version: "v1"
+        title: "Somos Más API",
+        version: "V1",
+        description: "Admin API Documentation"
       },
       paths: {},
-      servers: [
-        {
-          url: "https://{defaultHost}",
-          variables: {
-            defaultHost: {
-              default: "www.example.com"
-            }
-          }
-        }
-      ]
+      host: "localhost:3000"
+    },
+    "v1/api_v1.json" => {
+      openapi: "3.0.3",
+      info: {
+        title: "Somos Más API",
+        version: "V1",
+        description: "API V1 Documentation"
+      },
+      paths: {},
+      host: "localhost:3000"
+    },
+    "v1/auth_api.json" => {
+      openapi: "3.0.3",
+      info: {
+        title: "Somos Más API",
+        version: "V1",
+        description: "API V1 Documentation"
+      },
+      paths: {},
+      host: "localhost:3000"
     }
   }
 

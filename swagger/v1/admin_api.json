@@ -1,0 +1,1339 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Somos Más API",
+    "version": "V1",
+    "description": "Admin API Documentation"
+  },
+  "paths": {
+    "/admin/activities": {
+      "post": {
+        "summary": "Create an activity",
+        "tags": [
+          "Activities"
+        ],
+        "parameters": [
+
+        ],
+        "responses": {
+          "201": {
+            "description": "Activity created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "content"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Token is not provided"
+          },
+          "403": {
+            "description": "User without permissions"
+          },
+          "422": {
+            "description": "Activity doesn't exist"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "content": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "content"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/activities/{id}": {
+      "put": {
+        "summary": "Update an activity",
+        "tags": [
+          "Activities"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Activity updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "content"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Token is not provided"
+          },
+          "403": {
+            "description": "User without permissions"
+          },
+          "422": {
+            "description": "Parameter invalid or missing"
+          }
+        }
+      }
+    },
+    "/admin/categories": {
+      "get": {
+        "summary": "Show all categories",
+        "tags": [
+          "Categories"
+        ],
+        "responses": {
+          "200": {
+            "description": "Show all categories",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "description"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Token is not provided"
+          },
+          "403": {
+            "description": "User without permissions"
+          },
+          "422": {
+            "description": "Parameter invalid or missing"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a category",
+        "tags": [
+          "Categories"
+        ],
+        "parameters": [
+
+        ],
+        "responses": {
+          "201": {
+            "description": "Activity created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "description"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Token is not provided"
+          },
+          "403": {
+            "description": "User without permissions"
+          },
+          "422": {
+            "description": "Activity doesn't exist"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "description"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/categories/{id}": {
+      "get": {
+        "summary": "Show a category",
+        "tags": [
+          "Categories"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Activity updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "description"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Token is not provided"
+          },
+          "403": {
+            "description": "User without permissions"
+          },
+          "422": {
+            "description": "Parameter invalid or missing"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a category",
+        "tags": [
+          "Categories"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Category updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "description"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Token is not provided"
+          },
+          "403": {
+            "description": "User without permissions"
+          },
+          "422": {
+            "description": "Parameter invalid or missing"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an category",
+        "tags": [
+          "Categories"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Category deleted"
+          },
+          "401": {
+            "description": "Unauthorized. Token is not provided"
+          },
+          "403": {
+            "description": "User without permissions"
+          },
+          "422": {
+            "description": "Parameter invalid or missing"
+          }
+        }
+      }
+    },
+    "/admin/commentaries": {
+      "get": {
+        "summary": "Show all commentaries",
+        "tags": [
+          "Commentaries"
+        ],
+        "responses": {
+          "200": {
+            "description": "Show all commentaries",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "body": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "body"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Token is not provided"
+          },
+          "403": {
+            "description": "User without permissions"
+          },
+          "422": {
+            "description": "Parameter invalid or missing"
+          }
+        }
+      }
+    },
+    "/admin/members": {
+      "post": {
+        "summary": "Create a member",
+        "tags": [
+          "Members"
+        ],
+        "parameters": [
+
+        ],
+        "responses": {
+          "201": {
+            "description": "Activity created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "facebook_url": {
+                      "type": "string"
+                    },
+                    "instagram_url": {
+                      "type": "string"
+                    },
+                    "linkendin_url": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Token is not provided"
+          },
+          "403": {
+            "description": "User without permissions"
+          },
+          "422": {
+            "description": "Activity doesn't exist"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "facebook_url": {
+                    "type": "string"
+                  },
+                  "instagram_url": {
+                    "type": "string"
+                  },
+                  "linkendin_url": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/members/{id}": {
+      "put": {
+        "summary": "Update a member",
+        "tags": [
+          "Members"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Member updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "facebook_url": {
+                      "type": "string"
+                    },
+                    "instagram_url": {
+                      "type": "string"
+                    },
+                    "linkendin_url": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Token is not provided"
+          },
+          "403": {
+            "description": "User without permissions"
+          },
+          "422": {
+            "description": "Parameter invalid or missing"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an member",
+        "tags": [
+          "Members"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Member deleted"
+          },
+          "401": {
+            "description": "Unauthorized. Token is not provided"
+          },
+          "403": {
+            "description": "User without permissions"
+          },
+          "422": {
+            "description": "Parameter invalid or missing"
+          }
+        }
+      }
+    },
+    "/admin/organization": {
+      "put": {
+        "summary": "Update organization info",
+        "tags": [
+          "Organization"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Organization updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "phone": {
+                      "type": "string"
+                    },
+                    "address": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "facebook_url": {
+                      "type": "string"
+                    },
+                    "linkedin_url": {
+                      "type": "string"
+                    },
+                    "instagram_url": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "description"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Token is not provided"
+          },
+          "403": {
+            "description": "User without permissions"
+          },
+          "422": {
+            "description": "Parameter invalid or missing"
+          }
+        }
+      }
+    },
+    "/admin/posts/{id}": {
+      "get": {
+        "summary": "Show a post",
+        "tags": [
+          "Posts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Activity updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    },
+                    "category_id": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "content",
+                    "category_id"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Token is not provided"
+          },
+          "403": {
+            "description": "User without permissions"
+          },
+          "422": {
+            "description": "Parameter invalid or missing"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a post",
+        "tags": [
+          "Posts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Post updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "description"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Token is not provided"
+          },
+          "403": {
+            "description": "User without permissions"
+          },
+          "422": {
+            "description": "Parameter invalid or missing"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an post",
+        "tags": [
+          "Posts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Post deleted"
+          },
+          "401": {
+            "description": "Unauthorized. Token is not provided"
+          },
+          "403": {
+            "description": "User without permissions"
+          },
+          "422": {
+            "description": "Parameter invalid or missing"
+          }
+        }
+      }
+    },
+    "/admin/posts": {
+      "post": {
+        "summary": "Create a post",
+        "tags": [
+          "Posts"
+        ],
+        "parameters": [
+
+        ],
+        "responses": {
+          "201": {
+            "description": "Activity created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    },
+                    "category_id": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "content",
+                    "category_id"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Token is not provided"
+          },
+          "403": {
+            "description": "User without permissions"
+          },
+          "422": {
+            "description": "Activity doesn't exist"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "content": {
+                    "type": "string"
+                  },
+                  "category_id": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "name",
+                  "content",
+                  "category_id"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/slides": {
+      "get": {
+        "summary": "Show all slides",
+        "tags": [
+          "Slides"
+        ],
+        "responses": {
+          "200": {
+            "description": "Show all slides",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "text": {
+                      "type": "string"
+                    },
+                    "order": {
+                      "type": "integer"
+                    },
+                    "image_url": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "text",
+                    "image_url"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Token is not provided"
+          },
+          "403": {
+            "description": "User without permissions"
+          },
+          "422": {
+            "description": "Parameter invalid or missing"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a slide",
+        "tags": [
+          "Slides"
+        ],
+        "parameters": [
+
+        ],
+        "responses": {
+          "201": {
+            "description": "Activity created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "text": {
+                      "type": "string"
+                    },
+                    "order": {
+                      "type": "integer"
+                    },
+                    "image_url": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "text",
+                    "image_url"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Token is not provided"
+          },
+          "403": {
+            "description": "User without permissions"
+          },
+          "422": {
+            "description": "Activity doesn't exist"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "text": {
+                    "type": "string"
+                  },
+                  "order": {
+                    "type": "integer"
+                  },
+                  "image_url": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "text",
+                  "image_url"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/slides/{id}": {
+      "get": {
+        "summary": "Show a slide",
+        "tags": [
+          "Slides"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Activity updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    },
+                    "order": {
+                      "type": "integer"
+                    },
+                    "image_url": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "text",
+                    "image_url"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Token is not provided"
+          },
+          "403": {
+            "description": "User without permissions"
+          },
+          "422": {
+            "description": "Parameter invalid or missing"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a slide",
+        "tags": [
+          "Slides"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Slide updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "text": {
+                      "type": "string"
+                    },
+                    "order": {
+                      "type": "integer"
+                    },
+                    "image_url": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "text",
+                    "image_url"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Token is not provided"
+          },
+          "403": {
+            "description": "User without permissions"
+          },
+          "422": {
+            "description": "Parameter invalid or missing"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an slide",
+        "tags": [
+          "Slides"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Slide deleted"
+          },
+          "401": {
+            "description": "Unauthorized. Token is not provided"
+          },
+          "403": {
+            "description": "User without permissions"
+          },
+          "422": {
+            "description": "Parameter invalid or missing"
+          }
+        }
+      }
+    },
+    "/admin/testimonials": {
+      "post": {
+        "summary": "Create a testimonial",
+        "tags": [
+          "Testimonials"
+        ],
+        "parameters": [
+
+        ],
+        "responses": {
+          "201": {
+            "description": "Activity created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "content"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Token is not provided"
+          },
+          "403": {
+            "description": "User without permissions"
+          },
+          "422": {
+            "description": "Activity doesn't exist"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "content": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "content"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/testimonials/{id}": {
+      "put": {
+        "summary": "Update a testimonial",
+        "tags": [
+          "Testimonials"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Testimonial updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "content"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Token is not provided"
+          },
+          "403": {
+            "description": "User without permissions"
+          },
+          "422": {
+            "description": "Parameter invalid or missing"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an testimonial",
+        "tags": [
+          "Testimonials"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Testimonial deleted"
+          },
+          "401": {
+            "description": "Unauthorized. Token is not provided"
+          },
+          "403": {
+            "description": "User without permissions"
+          },
+          "422": {
+            "description": "Parameter invalid or missing"
+          }
+        }
+      }
+    },
+    "/admin/users": {
+      "get": {
+        "summary": "Show all users",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "Show all users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "role": {
+                      "type": "string"
+                    },
+                    "first_name": {
+                      "type": "string"
+                    },
+                    "last_name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "role",
+                    "first_name",
+                    "last_name",
+                    "email"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Token is not provided"
+          },
+          "403": {
+            "description": "User without permissions"
+          },
+          "422": {
+            "description": "Parameter invalid or missing"
+          }
+        }
+      }
+    }
+  },
+  "host": "localhost:3000"
+}
