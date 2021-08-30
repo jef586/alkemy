@@ -32,13 +32,13 @@ describe "DELETE /admin/posts/:id", type: :request do
     context "and the post doesn't exists" do
       let(:endpoint) { delete admin_post_path(240) }
 
-      it "has an HTTP status 204" do
+      it "has an HTTP status 404" do
         endpoint
-        expect(response).to have_http_status(204)
+        expect(response).to have_http_status(404)
       end
-      it "returns an empty response body" do
+      it "returns error message: 'Couldn't find Post...'" do
         endpoint
-        expect(response.body).to be_empty
+        expect(body_json["error"]).to match(/Couldn't find Post/)
       end
       it "Post.count doesn't change" do
         expect { endpoint }.not_to change(Post, :count)
