@@ -6,6 +6,7 @@ module Admin
     end
 
     def show
+      render json: @member, serializer: MemberSerializer, status: :ok
     end
 
     def create
