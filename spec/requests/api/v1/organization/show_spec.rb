@@ -8,7 +8,7 @@ describe "GET /api/v1/organization", type: :request do
   let(:user) { create(:user) }
   let!(:organization) { create(:organization) }
 
-  describe "When user is regular" do
+  context "when user is regular" do
     it "has http status 200" do
       endpoint
       expect(response).to have_http_status(200)

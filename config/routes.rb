@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :roles
-      resources :categories
+      resources :categories, only: [:index]
       resources :members, only: [:index]
-      resources :posts, only: [:show]
+      resources :posts, only: [:index, :show]
       resources :activities, only: [:show]
       resources :users
       resources :commentaries, only: [:show]
@@ -27,6 +27,7 @@ Rails.application.routes.draw do
         end
       end
       resources :slides, only: [:index]
+      resources :testimonials, only: [:index]
     end
   end
 
@@ -36,8 +37,9 @@ Rails.application.routes.draw do
     resources :slides, only: [:index, :create, :update, :destroy, :show]
     resources :users, only: [:index]
     resources :posts, only: [:create, :destroy, :show, :update]
-    resources :activities, only: [:update]
+    resources :activities, only: [:update,:create]
     resources :members, only: [:show, :update, :destroy, :create]
     resources :commentaries, only: [:index]
+    resources :categories, only: [:create, :update, :destroy, :show, :index]
   end
 end

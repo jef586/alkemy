@@ -75,14 +75,14 @@ CATEGORIES.each do |category|
 end
 
 # Members instance
-10.times do
+20.times do
   Member.create(name: Faker::Name.name, facebook_url: Faker::Internet.url(host: "facebook.com"), instagram_url: Faker::Internet.url(host: "instagram.com"), linkedin_url: Faker::Internet.url(host: "linkedin.com"), description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
 end
 
 # Posts instances
 random_categories = Category.where(id: 1..4).sample
 
-10.times do
+20.times do
   Post.create!(name: Faker::Book.title, content: Faker::Lorem.paragraph, user: admin, category: random_categories)
 end
 
@@ -129,8 +129,8 @@ new_contact = Contact.create!(
 end
 
 # Testimonial instances
-10.times do |i|
-  Testimonial.create!(name: "Testimonio #{i}", content: "Contenido #{i}",user: admin)
+20.times do |i|
+  Testimonial.create!(name: "Testimonio #{i}", content: Faker::Lorem.paragraph, user: admin)
 end
 
 # Slide instances

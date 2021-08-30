@@ -3,46 +3,21 @@
 module Api
   module V1
     class CategoriesController < ApiController
+      include Paginable
+
       def index
-        render json: @categories, each_serializer: Categories::IndexCategorySerializer, status: :ok
-      end
-
-      def show
-        # to do implement only admin privilege
-        render json: @category, serializer: Categories::CategorySerializer, status: :ok
-      end
-
-      def update
-        if @category.update(update_params)
-          render json: @category, serializer: Categories::CategorySerializer, status: :ok
-        else
-          render json: @category.errors, status: :unprocessable_entity
-        end
-      end
-
-      def create
-        if @category.save
-          render json: @category, serializer: Categories::CategorySerializer, status: :created
-        else
-          render json: @category.errors, status: :unprocessable_entity
-        end
-      end
-
-      def destroy
-        if @category.present?
-          @category.destroy
-        end
-
-        head :no_content
+        render json: set_categories, meta: pagination_fields(set_categories), each_serializer: Categories::IndexCategorySerializer, status: :ok
       end
 
       private
-        def create_params
-          params.permit(:name, :description)
+        def set_categories
+          fetch_categories
         end
 
-        def update_params
-          params.permit(:name, :description)
+        def fetch_categories
+          categories = @categories
+          categories = categories.page(page).per_page(page_size) if page
+          categories
         end
     end
   end
