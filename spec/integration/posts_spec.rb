@@ -3,7 +3,6 @@
 require "swagger_helper"
 
 describe "Posts API", type: :request  do
-
   # ADMIN ENDPOINTS
 
   path "/admin/posts/{id}" do
@@ -11,26 +10,26 @@ describe "Posts API", type: :request  do
       tags "Posts"
       produces "application/json"
       parameter name: :id, in: :path, type: :string
-  
+
       response "201", "Activity updated" do
         schema type: :object,
         properties: {
           name: { type: :string },
           content: { type: :string },
-          category_id: { type: :integer}
+          category_id: { type: :integer }
         },
-        required: ['name', 'content', 'category_id' ]
+        required: ["name", "content", "category_id" ]
         run_test!
       end
-  
+
       response "401", "Unauthorized. Token is not provided" do
         run_test!
       end
-  
+
       response "403", "User without permissions" do
         run_test!
       end
-      
+
       response "422", "Parameter invalid or missing" do
         run_test!
       end
@@ -50,9 +49,9 @@ describe "Posts API", type: :request  do
         properties: {
           name: { type: :string },
           content: { type: :string },
-          category_id: { type: :integer}
+          category_id: { type: :integer }
         },
-        required: ['name', 'content', 'category_id' ]
+        required: ["name", "content", "category_id" ]
       }
 
       response "201", "Activity created" do
@@ -61,9 +60,9 @@ describe "Posts API", type: :request  do
             id: { type: :integer },
             name: { type: :string },
             content: { type: :string },
-            category_id: { type: :integer}
+            category_id: { type: :integer }
           },
-          required: ['name', 'content', 'category_id' ]
+          required: ["name", "content", "category_id" ]
         run_test!
       end
 
@@ -74,7 +73,7 @@ describe "Posts API", type: :request  do
       response "403", "User without permissions" do
         run_test!
       end
-      
+
       response "422", "Activity doesn't exist" do
         run_test!
       end
@@ -91,9 +90,9 @@ describe "Posts API", type: :request  do
         properties: {
           name: { type: :string },
           content: { type: :string },
-          category_id: { type: :integer}
+          category_id: { type: :integer }
         },
-        required: ['name', 'content', 'category_id' ]
+        required: ["name", "content", "category_id" ]
       }
 
       response "201", "Post updated" do
@@ -103,7 +102,7 @@ describe "Posts API", type: :request  do
             name: { type: :string },
             description: { type: :string }
           },
-          required: ['name', 'description' ]
+          required: ["name", "description" ]
         run_test!
       end
 
@@ -114,7 +113,7 @@ describe "Posts API", type: :request  do
       response "403", "User without permissions" do
         run_test!
       end
-      
+
       response "422", "Parameter invalid or missing" do
         run_test!
       end
@@ -138,7 +137,7 @@ describe "Posts API", type: :request  do
       response "403", "User without permissions" do
         run_test!
       end
-      
+
       response "422", "Parameter invalid or missing" do
         run_test!
       end
@@ -146,62 +145,62 @@ describe "Posts API", type: :request  do
   end
 
   # API V1 ENDPOINTS
-  path "/api/v1/posts", swagger_doc: 'v1/api_v1.json' do
+  path "/api/v1/posts", swagger_doc: "v1/api_v1.json" do
     get "Show all posts" do
       tags "Posts"
       produces "application/json"
-  
+
       response "200", "Show all posts" do
         schema type: :object,
           properties: {
             id: { type: :integer },
             name: { type: :string },
             content: { type: :string },
-            category_id: { type: :integer}
+            category_id: { type: :integer }
           },
-          required: ['name', 'content', 'category_id' ]
+          required: ["name", "content", "category_id" ]
         run_test!
       end
 
       response "401", "Unauthorized. Token is not provided" do
         run_test!
       end
-  
+
       response "403", "User without permissions" do
         run_test!
       end
-      
+
       response "422", "Parameter invalid or missing" do
         run_test!
       end
     end
   end
 
-  path "/api/v1/posts/{id}", swagger_doc: 'v1/api_v1.json' do
+  path "/api/v1/posts/{id}", swagger_doc: "v1/api_v1.json" do
     get "Show a post" do
       tags "Posts"
       produces "application/json"
       parameter name: :id, in: :path, type: :string
-  
+
       response "201", "Activity updated" do
         schema type: :object,
         properties: {
           name: { type: :string },
           content: { type: :string },
-          category_id: { type: :integer}
+          category_id: { type: :integer }
         },
-        required: ['name', 'content', 'category_id' ]
+        required: ["name", "content", "category_id" ]
         run_test!
       end
-  
+
       response "401", "Unauthorized. Token is not provided" do
         run_test!
       end
-  
+
       response "403", "User without permissions" do
         run_test!
       end
-      
+
       response "422", "Parameter invalid or missing" do
         run_test!
       end

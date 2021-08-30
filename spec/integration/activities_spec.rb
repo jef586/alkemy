@@ -3,7 +3,6 @@
 require "swagger_helper"
 
 describe "Activities API", type: :request  do
-
   # ADMIN ENDPOINTS
   path "/admin/activities" do
     post "Create an activity" do
@@ -28,7 +27,7 @@ describe "Activities API", type: :request  do
             name: { type: :string },
             content: { type: :string }
           },
-          required: ['name', 'content' ]
+          required: ["name", "content" ]
         run_test!
       end
 
@@ -39,7 +38,7 @@ describe "Activities API", type: :request  do
       response "403", "User without permissions" do
         run_test!
       end
-      
+
       response "422", "Activity doesn't exist" do
         run_test!
       end
@@ -67,7 +66,7 @@ describe "Activities API", type: :request  do
             name: { type: :string },
             content: { type: :string }
           },
-          required: ['name', 'content' ]
+          required: ["name", "content" ]
         run_test!
       end
 
@@ -78,7 +77,7 @@ describe "Activities API", type: :request  do
       response "403", "User without permissions" do
         run_test!
       end
-      
+
       response "422", "Parameter invalid or missing" do
         run_test!
       end

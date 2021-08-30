@@ -3,7 +3,6 @@
 require "swagger_helper"
 
 describe "Organizations API", type: :request  do
-
   # ADMIN ENDPOINTS
 
   path "/admin/organization" do
@@ -37,7 +36,7 @@ describe "Organizations API", type: :request  do
             linkedin_url: { type: :string },
             instagram_url: { type: :string }
           },
-          required: ['name', 'description' ]
+          required: ["name", "description" ]
         run_test!
       end
 
@@ -48,7 +47,7 @@ describe "Organizations API", type: :request  do
       response "403", "User without permissions" do
         run_test!
       end
-      
+
       response "422", "Parameter invalid or missing" do
         run_test!
       end
@@ -56,11 +55,11 @@ describe "Organizations API", type: :request  do
   end
 
   # API V1 ENDPOINTS
-  path "/api/v1/organization", swagger_doc: 'v1/api_v1.json' do
+  path "/api/v1/organization", swagger_doc: "v1/api_v1.json" do
     get "Show organization info" do
       tags "Organization"
       produces "application/json"
-  
+
       response "200", "Show organization info" do
         schema type: :object,
           properties: {
@@ -73,18 +72,18 @@ describe "Organizations API", type: :request  do
             linkedin_url: { type: :string },
             instagram_url: { type: :string }
           },
-          required: ['name' ]
+          required: ["name" ]
         run_test!
       end
 
       response "401", "Unauthorized. Token is not provided" do
         run_test!
       end
-  
+
       response "403", "User without permissions" do
         run_test!
       end
-      
+
       response "422", "Parameter invalid or missing" do
         run_test!
       end

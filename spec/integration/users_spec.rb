@@ -3,14 +3,13 @@
 require "swagger_helper"
 
 describe "Users API", type: :request  do
-
   # ADMIN ENDPOINTS
 
   path "/admin/users" do
     get "Show all users" do
       tags "Users"
       produces "application/json"
-  
+
       response "200", "Show all users" do
         schema type: :object,
           properties: {
@@ -20,18 +19,18 @@ describe "Users API", type: :request  do
             last_name: { type: :string },
             email: { type: :string }
           },
-          required: ['role', 'first_name', 'last_name', 'email']
+          required: ["role", "first_name", "last_name", "email"]
         run_test!
       end
 
       response "401", "Unauthorized. Token is not provided" do
         run_test!
       end
-  
+
       response "403", "User without permissions" do
         run_test!
       end
-      
+
       response "422", "Parameter invalid or missing" do
         run_test!
       end
@@ -41,7 +40,7 @@ describe "Users API", type: :request  do
 
   # API V1 ENDPOINTS
 
-  path "/api/v1/users/{id}", swagger_doc: 'v1/api_v1.json' do
+  path "/api/v1/users/{id}", swagger_doc: "v1/api_v1.json" do
     put "Update a user" do
       tags "Users"
       produces "application/json"
@@ -54,7 +53,7 @@ describe "Users API", type: :request  do
           last_name: { type: :string },
           email: { type: :string }
         },
-        required: ['role', 'first_name', 'last_name', 'email']
+        required: ["role", "first_name", "last_name", "email"]
       }
 
       response "201", "User updated" do
@@ -66,7 +65,7 @@ describe "Users API", type: :request  do
             last_name: { type: :string },
             email: { type: :string }
           },
-          required: ['role', 'first_name', 'last_name', 'email']
+          required: ["role", "first_name", "last_name", "email"]
         run_test!
       end
 
@@ -77,14 +76,14 @@ describe "Users API", type: :request  do
       response "403", "User without permissions" do
         run_test!
       end
-      
+
       response "422", "Parameter invalid or missing" do
         run_test!
       end
     end
   end
 
-  path "/api/v1/users/{id}", swagger_doc: 'v1/api_v1.json' do
+  path "/api/v1/users/{id}", swagger_doc: "v1/api_v1.json" do
     delete "Delete an user" do
       tags "Users"
       produces "application/json"
@@ -101,7 +100,7 @@ describe "Users API", type: :request  do
       response "403", "User without permissions" do
         run_test!
       end
-      
+
       response "422", "Parameter invalid or missing" do
         run_test!
       end

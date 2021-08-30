@@ -4,7 +4,7 @@
 require "swagger_helper"
 
 describe "Auth API" do
-  path "/auth/login", swagger_doc: 'v1/auth_api.json' do
+  path "/auth/login", swagger_doc: "v1/auth_api.json" do
     post "login a user" do
       tags "Authentication"
       consumes "application/json"

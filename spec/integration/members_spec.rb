@@ -3,7 +3,6 @@
 require "swagger_helper"
 
 describe "Members API", type: :request  do
-
   # ADMIN ENDPOINTS
 
   path "/admin/members" do
@@ -35,7 +34,7 @@ describe "Members API", type: :request  do
             linkendin_url: { type: :string },
             description: { type: :string }
           },
-          required: ['name']
+          required: ["name"]
         run_test!
       end
 
@@ -46,7 +45,7 @@ describe "Members API", type: :request  do
       response "403", "User without permissions" do
         run_test!
       end
-      
+
       response "422", "Activity doesn't exist" do
         run_test!
       end
@@ -80,7 +79,7 @@ describe "Members API", type: :request  do
             linkendin_url: { type: :string },
             description: { type: :string }
           },
-          required: ['name']
+          required: ["name"]
         run_test!
       end
 
@@ -91,7 +90,7 @@ describe "Members API", type: :request  do
       response "403", "User without permissions" do
         run_test!
       end
-      
+
       response "422", "Parameter invalid or missing" do
         run_test!
       end
@@ -115,7 +114,7 @@ describe "Members API", type: :request  do
       response "403", "User without permissions" do
         run_test!
       end
-      
+
       response "422", "Parameter invalid or missing" do
         run_test!
       end
@@ -123,11 +122,11 @@ describe "Members API", type: :request  do
   end
 
   # API V1 ENDPOINTS
-  path "/api/v1/members", swagger_doc: 'v1/api_v1.json' do
+  path "/api/v1/members", swagger_doc: "v1/api_v1.json" do
     get "Show all members" do
       tags "Members"
       produces "application/json"
-  
+
       response "200", "Show all members" do
         schema type: :object,
           properties: {
@@ -137,18 +136,18 @@ describe "Members API", type: :request  do
             linkendin_url: { type: :string },
             description: { type: :string }
           },
-          required: ['name']
+          required: ["name"]
         run_test!
       end
 
       response "401", "Unauthorized. Token is not provided" do
         run_test!
       end
-  
+
       response "403", "User without permissions" do
         run_test!
       end
-      
+
       response "422", "Parameter invalid or missing" do
         run_test!
       end

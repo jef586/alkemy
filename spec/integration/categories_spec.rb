@@ -3,14 +3,13 @@
 require "swagger_helper"
 
 describe "Categories API", type: :request  do
-
   # ADMIN ENDPOINTS
 
   path "/admin/categories" do
     get "Show all categories" do
       tags "Categories"
       produces "application/json"
-  
+
       response "200", "Show all categories" do
         schema type: :object,
           properties: {
@@ -18,48 +17,48 @@ describe "Categories API", type: :request  do
             name: { type: :string },
             description: { type: :string }
           },
-          required: ['name', 'description' ]
+          required: ["name", "description" ]
         run_test!
       end
 
       response "401", "Unauthorized. Token is not provided" do
         run_test!
       end
-  
+
       response "403", "User without permissions" do
         run_test!
       end
-      
+
       response "422", "Parameter invalid or missing" do
         run_test!
       end
     end
   end
-  
+
   path "/admin/categories/{id}" do
     get "Show a category" do
       tags "Categories"
       produces "application/json"
       parameter name: :id, in: :path, type: :string
-  
+
       response "201", "Activity updated" do
         schema type: :object,
           properties: {
             name: { type: :string },
             description: { type: :string }
           },
-          required: ['name', 'description' ]
+          required: ["name", "description" ]
         run_test!
       end
-  
+
       response "401", "Unauthorized. Token is not provided" do
         run_test!
       end
-  
+
       response "403", "User without permissions" do
         run_test!
       end
-      
+
       response "422", "Parameter invalid or missing" do
         run_test!
       end
@@ -90,7 +89,7 @@ describe "Categories API", type: :request  do
             name: { type: :string },
             description: { type: :string }
           },
-          required: ['name', 'description' ]
+          required: ["name", "description" ]
         run_test!
       end
 
@@ -101,7 +100,7 @@ describe "Categories API", type: :request  do
       response "403", "User without permissions" do
         run_test!
       end
-      
+
       response "422", "Activity doesn't exist" do
         run_test!
       end
@@ -129,7 +128,7 @@ describe "Categories API", type: :request  do
             name: { type: :string },
             description: { type: :string }
           },
-          required: ['name', 'description' ]
+          required: ["name", "description" ]
         run_test!
       end
 
@@ -140,7 +139,7 @@ describe "Categories API", type: :request  do
       response "403", "User without permissions" do
         run_test!
       end
-      
+
       response "422", "Parameter invalid or missing" do
         run_test!
       end
@@ -164,7 +163,7 @@ describe "Categories API", type: :request  do
       response "403", "User without permissions" do
         run_test!
       end
-      
+
       response "422", "Parameter invalid or missing" do
         run_test!
       end
@@ -172,11 +171,11 @@ describe "Categories API", type: :request  do
   end
 
   # API V1 ENDPOINTS
-  path "/api/v1/categories", swagger_doc: 'v1/api_v1.json' do
+  path "/api/v1/categories", swagger_doc: "v1/api_v1.json" do
     get "Show all categories" do
       tags "Categories"
       produces "application/json"
-  
+
       response "200", "Show all categories" do
         schema type: :object,
           properties: {
@@ -184,18 +183,18 @@ describe "Categories API", type: :request  do
             name: { type: :string },
             description: { type: :string }
           },
-          required: ['name', 'description' ]
+          required: ["name", "description" ]
         run_test!
       end
 
       response "401", "Unauthorized. Token is not provided" do
         run_test!
       end
-  
+
       response "403", "User without permissions" do
         run_test!
       end
-      
+
       response "422", "Parameter invalid or missing" do
         run_test!
       end
