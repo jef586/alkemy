@@ -6,7 +6,7 @@ module Api
       include Paginable
 
       def index
-        render json: set_testimonials, meta: pagination_fields(set_testimonials), each_serializer: Admin::TestimonialSerializer, status: :ok
+        render json: set_testimonials, meta: pagination_fields(set_testimonials), each_serializer: TestimonialSerializer, status: :ok
       end
 
       def show

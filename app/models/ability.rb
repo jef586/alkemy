@@ -12,6 +12,9 @@ class Ability
       can [:read, :create], Contact, from_user: user
       can [:read], Slide
       can [:read], Testimonial
+      can [:read], Post
+      can [:read], Category
+      can [:read], Member
     else
       can :read, Commentary, published: true
     end
