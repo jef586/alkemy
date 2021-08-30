@@ -11,6 +11,7 @@ class Ability
       can [:read], Commentary
       can [:read, :create], Contact, from_user: user
       can [:read], Slide
+      can [:read], Testimonial
     else
       can :read, Commentary, published: true
     end

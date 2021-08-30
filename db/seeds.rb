@@ -129,8 +129,8 @@ new_contact = Contact.create!(
 end
 
 # Testimonial instances
-10.times do |i|
-  Testimonial.create!(name: "Testimonio #{i}", content: "Contenido #{i}",user: admin)
+20.times do |i|
+  Testimonial.create!(name: "Testimonio #{i}", content: Faker::Lorem.paragraph, user: admin)
 end
 
 # Slide instances
