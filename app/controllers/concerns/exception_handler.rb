@@ -18,6 +18,7 @@ module ExceptionHandler
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
     rescue_from ActiveModel::ValidationError, with: :render_model_errors
     rescue_from CanCan::AccessDenied, with: :render_not_authorized
+    rescue_from RangeError, with: :render_range_error
 
     private
       def render_not_authorized
@@ -34,6 +35,10 @@ module ExceptionHandler
 
       def render_parameter_missing(exception)
         render json: { error: exception.message }, status: :bad_request
+      end
+
+      def render_range_error
+        render json: { not_found: "No se encontraron resultados" }, status: :not_found
       end
   end
 end

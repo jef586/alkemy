@@ -26,6 +26,7 @@ Rails.application.routes.draw do
         end
       end
       resources :slides, only: [:index]
+      resources :testimonials, only: [:index]
     end
   end
 
