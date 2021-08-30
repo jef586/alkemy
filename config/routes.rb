@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :roles
-      resources :categories
+      resources :categories, only: [:index]
       resources :members, only: [:index]
       resources :activities, only: [:show]
       resources :users
@@ -39,5 +39,6 @@ Rails.application.routes.draw do
     resources :activities, only: [:update,:create]
     resources :members, only: [:show, :update, :destroy, :create]
     resources :commentaries, only: [:index]
+    resources :categories, only: [:create, :update, :destroy, :show, :index]
   end
 end
