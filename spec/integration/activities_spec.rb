@@ -7,7 +7,6 @@ describe "Activities API", type: :request  do
   path "/admin/activities" do
     post "Create an activity" do
       tags "Activities"
-
       consumes "application/json"
       produces "application/json"
 

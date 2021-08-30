@@ -23,7 +23,19 @@ RSpec.configure do |config|
         description: "Admin API Documentation"
       },
       paths: {},
-      host: "localhost:3000"
+      host: "localhost:3000",
+      components: {
+        securitySchemes: {
+          api_key: {
+            type: :apiKey,
+            name: 'Authorization',
+            in: :header
+          }
+        },
+        security: {
+          api_key: []
+        }
+      }
     },
     "v1/api_v1.json" => {
       openapi: "3.0.3",
@@ -33,7 +45,19 @@ RSpec.configure do |config|
         description: "API V1 Documentation"
       },
       paths: {},
-      host: "localhost:3000"
+      host: "localhost:3000",
+      components: {
+        securitySchemes: {
+          api_key: {
+            type: :apiKey,
+            name: 'Authorization',
+            in: :header
+          }
+        },
+        security: {
+          api_key: []
+        }
+      }
     },
     "v1/auth_api.json" => {
       openapi: "3.0.3",
@@ -43,7 +67,19 @@ RSpec.configure do |config|
         description: "API V1 Documentation"
       },
       paths: {},
-      host: "localhost:3000"
+      host: "localhost:3000",
+      components: {
+        securitySchemes: {
+          api_key: {
+            type: :apiKey,
+            name: 'Authorization',
+            in: :header
+          }
+        },
+        security: {
+          api_key: []
+        }
+      }
     }
   }
 

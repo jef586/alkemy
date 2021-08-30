@@ -1335,5 +1335,19 @@
       }
     }
   },
-  "host": "localhost:3000"
+  "host": "localhost:3000",
+  "components": {
+    "securitySchemes": {
+      "api_key": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    },
+    "security": {
+      "api_key": [
+
+      ]
+    }
+  }
 }
