@@ -48,3 +48,4 @@ This part of seed create an user with administrator role and ten posts to test t
 ### Commentaries instances
 
 This part of seed create an user and ten commentaries with the purpose to test the endpoint of the Commentary controller.
+# alkemy
